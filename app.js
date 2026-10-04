@@ -3,6 +3,26 @@
   const branchGrid = document.getElementById("branchGrid");
   const questions = document.getElementById("preguntas");
 
+  function firstSentence(text) {
+    if (!text) return "";
+    const match = text.match(/^.*?[.!?](?:\s|$)/);
+    return (match ? match[0] : text).trim();
+  }
+
+  function compact(text, limit = 330) {
+    if (text.length <= limit) return text;
+    const slice = text.slice(0, limit);
+    const lastStop = Math.max(slice.lastIndexOf("."), slice.lastIndexOf(";"));
+    return `${slice.slice(0, lastStop > 170 ? lastStop + 1 : limit).trim()}`;
+  }
+
+  function naturalExample(text) {
+    const sentence = firstSentence(text)
+      .replace(/^En\s+/i, "")
+      .replace(/^Incorporar\s+/i, "incorporar ");
+    return sentence.charAt(0).toLowerCase() + sentence.slice(1);
+  }
+
   function paragraph(text, className = "") {
     return `<p${className ? ` class="${className}"` : ""}>${text}</p>`;
   }
@@ -11,11 +31,11 @@
     return `
       <article class="node-card" data-connector="${node.connector}">
         <h3>${node.title}</h3>
-        ${paragraph(node.body)}
-        ${paragraph(node.relation, "relation")}
+        ${paragraph(compact(node.body))}
+        ${paragraph(compact(node.relation, 230), "relation")}
         ${
           node.example
-            ? `<p class="example"><strong>Ejemplo aplicado a mi práctica docente</strong>${node.example}</p>`
+            ? `<p class="example">En mi práctica docente, ${naturalExample(node.example)}</p>`
             : ""
         }
       </article>
@@ -58,7 +78,7 @@
                 <article class="question-card">
                   <span class="node-label">Pregunta ${index + 1}</span>
                   <h3>${item.q}</h3>
-                  <p>${item.a}</p>
+                  <p>${compact(item.a, 280)}</p>
                 </article>
               `
             )

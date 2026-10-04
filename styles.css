@@ -3,8 +3,11 @@
   --ink: #172033;
   --muted: #5b6678;
   --line: #cfd8e6;
+  --connector: #111827;
   --bg: #f4f7fb;
   --paper: #ffffff;
+  --box: #9ed8ff;
+  --box-strong: #72bdff;
   --navy: #102a56;
   --history: #007b78;
   --principles: #7550b8;
@@ -133,6 +136,10 @@ button:focus-visible {
   position: relative;
   max-width: 1680px;
   margin: 0 auto;
+  border: 1px solid #d9e2ee;
+  border-radius: 12px;
+  padding: 28px;
+  background: #ffffff;
   display: grid;
   grid-template-columns: minmax(300px, 1fr) minmax(360px, 0.92fr) minmax(300px, 1fr);
   grid-template-areas:
@@ -147,8 +154,8 @@ button:focus-visible {
   content: "";
   position: absolute;
   inset: 318px 14% auto;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  height: 3px;
+  background: var(--connector);
   pointer-events: none;
 }
 
@@ -158,8 +165,9 @@ button:focus-visible {
   left: 50%;
   top: 238px;
   width: 2px;
+  width: 3px;
   height: 420px;
-  background: linear-gradient(180deg, transparent, var(--line), transparent);
+  background: var(--connector);
   transform: translateX(-50%);
   pointer-events: none;
 }
@@ -181,16 +189,16 @@ button:focus-visible {
 .mind-branch,
 .node-card,
 .question-card {
-  border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--paper);
-  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.07);
 }
 
 .root-card {
-  border-top: 7px solid var(--navy);
-  padding: clamp(22px, 3vw, 34px);
+  border: 2px solid var(--connector);
+  padding: clamp(18px, 2.4vw, 28px);
   text-align: center;
+  background: linear-gradient(180deg, var(--box), var(--box-strong));
+  box-shadow: 6px 7px 0 #00a8d8, 0 18px 36px rgba(15, 23, 42, 0.12);
 }
 
 .node-label,
@@ -209,7 +217,7 @@ button:focus-visible {
 
 .root-card h2 {
   margin: 10px 0;
-  color: var(--navy);
+  color: #061a39;
   font-size: clamp(1.55rem, 2.7vw, 2.55rem);
   line-height: 1.08;
 }
@@ -226,22 +234,21 @@ button:focus-visible {
 .mind-branch {
   position: relative;
   z-index: 2;
-  overflow: clip;
+  overflow: visible;
+  border: 0;
+  background: transparent;
 }
 
 .mind-branch.history {
   grid-area: history;
-  border-top: 7px solid var(--history);
 }
 
 .mind-branch.principles {
   grid-area: principles;
-  border-top: 7px solid var(--principles);
 }
 
 .mind-branch.teaching {
   grid-area: teaching;
-  border-top: 7px solid var(--teaching);
 }
 
 .question-branch {
@@ -250,13 +257,12 @@ button:focus-visible {
 
 .mind-branch.questions {
   grid-area: questions;
-  border-top: 7px solid var(--questions);
 }
 
 .mind-branch::before {
   content: "";
   position: absolute;
-  background: var(--line);
+  background: var(--connector);
   pointer-events: none;
 }
 
@@ -264,7 +270,7 @@ button:focus-visible {
 .mind-branch.teaching::before {
   top: 70px;
   width: 28px;
-  height: 2px;
+  height: 3px;
 }
 
 .mind-branch.history::before {
@@ -280,6 +286,7 @@ button:focus-visible {
   left: 50%;
   top: -27px;
   width: 2px;
+  width: 3px;
   height: 27px;
   transform: translateX(-50%);
 }
@@ -289,9 +296,12 @@ button:focus-visible {
   grid-template-columns: 1fr auto;
   gap: 10px;
   align-items: center;
-  padding: 17px 18px;
-  border-bottom: 1px solid var(--line);
-  background: #fbfdff;
+  max-width: 100%;
+  padding: 15px 18px;
+  border: 2px solid var(--connector);
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--box), var(--box-strong));
+  box-shadow: 5px 6px 0 #00a8d8;
   cursor: pointer;
   list-style: none;
 }
@@ -319,7 +329,7 @@ button:focus-visible {
 .branch-title {
   grid-column: 1 / 2;
   grid-row: 1;
-  color: var(--navy);
+  color: #061a39;
   font-size: clamp(1.05rem, 1.35vw, 1.35rem);
   font-weight: 900;
   line-height: 1.14;
@@ -336,18 +346,37 @@ button:focus-visible {
 .connector-label {
   grid-column: 1 / -1;
   grid-row: 2;
+  color: #111827;
+  background: #f8fafc;
+  box-shadow: 5px 5px 0 rgba(17, 24, 39, 0.35);
 }
 
 .branch-intro {
-  margin: 0;
-  padding: 16px 18px 0;
+  margin: 16px 0 0;
+  border: 1px solid #b7c7db;
+  border-radius: 10px;
+  padding: 13px 15px;
+  background: #f8fbff;
 }
 
 .branch-flow,
 .questions-map {
+  position: relative;
   display: grid;
-  gap: 12px;
-  padding: 16px;
+  gap: 20px;
+  padding: 24px 16px 0;
+}
+
+.branch-flow::before,
+.questions-map::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: var(--connector);
+  transform: translateX(-50%);
 }
 
 .mind-branch.questions .questions-map {
@@ -356,8 +385,12 @@ button:focus-visible {
 
 .node-card,
 .question-card {
+  position: relative;
+  z-index: 1;
+  border: 2px solid #19304f;
   padding: 15px;
-  box-shadow: none;
+  background: linear-gradient(180deg, #dff3ff, #a8ddff);
+  box-shadow: 4px 5px 0 #00a8d8;
 }
 
 .node-card::before {
@@ -369,7 +402,8 @@ button:focus-visible {
   border-radius: 999px;
   padding: 4px 9px;
   color: #334155;
-  background: #eef4fb;
+  background: #f8fafc;
+  box-shadow: 4px 4px 0 rgba(17, 24, 39, 0.28);
   font-size: 0.75rem;
   font-weight: 820;
 }
@@ -389,7 +423,7 @@ button:focus-visible {
 
 .node-card .relation {
   margin-top: 10px;
-  border-left: 3px solid var(--line);
+  border-left: 4px solid #17365f;
   padding-left: 10px;
   color: #405168;
   font-size: 0.95rem;
@@ -397,17 +431,15 @@ button:focus-visible {
 
 .node-card .example {
   margin-top: 10px;
-  border-radius: 7px;
-  padding: 10px;
-  background: #f8fafc;
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: rgba(255, 255, 255, 0.72);
   color: #334155;
   font-size: 0.94rem;
 }
 
 .node-card .example strong {
-  display: block;
-  margin-bottom: 4px;
-  color: #0f172a;
+  display: inline;
 }
 
 .history .connector-label {
@@ -432,7 +464,7 @@ button:focus-visible {
 }
 
 .mind-branch:not([open]) .branch-header {
-  border-bottom: 0;
+  border-bottom: 2px solid var(--connector);
 }
 
 .mind-branch:not([open]) .branch-intro,
