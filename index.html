@@ -6,18 +6,16 @@
     <title>Actividad 1.1 | Una visión sinóptica de la pedagogía</title>
     <meta
       name="description"
-      content="Mapa conceptual interactivo de la Actividad 1.1: Una visión sinóptica de la pedagogía."
+      content="Mapa conceptual expandido de la Actividad 1.1: Una visión sinóptica de la pedagogía."
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/cytoscape@3.29.2/dist/cytoscape.min.js" defer></script>
-    <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js" defer></script>
-    <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js" defer></script>
+    <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
     <script src="data.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
     <header class="topbar">
-      <div class="identity">
+      <div>
         <p class="activity">Actividad 1.1: Mapa conceptual</p>
         <h1>Una visión sinóptica de la pedagogía</h1>
         <p class="subtitle">Capítulo 1: La pedagogía: tradición y vigencia</p>
@@ -30,90 +28,50 @@
           Andrea del Pilar Pérez Raigoso - Licenciada en Psicopedagogía
         </p>
       </div>
-      <nav class="actions" aria-label="Controles del mapa">
-        <button type="button" id="fitBtn" aria-label="Centrar mapa">Centrar mapa</button>
-        <button type="button" id="expandBtn" aria-label="Expandir todo">Expandir todo</button>
-        <button type="button" id="captureBtn" aria-label="Activar modo captura">Modo captura</button>
-        <button type="button" id="exportBtn" aria-label="Exportar mapa como PNG">Exportar PNG</button>
-        <button type="button" data-dialog="questionsDialog" aria-label="Abrir preguntas reflexivas">
-          Preguntas reflexivas
-        </button>
-        <button type="button" data-dialog="aiDialog" aria-label="Abrir transparencia sobre uso de IA">
-          Uso de IA
-        </button>
+      <nav class="actions" aria-label="Acciones del mapa">
+        <a href="#mapa">Mapa</a>
+        <a href="#preguntas">Preguntas reflexivas</a>
+        <button type="button" id="captureBtn">Modo captura</button>
+        <button type="button" id="exportBtn">Exportar PNG</button>
       </nav>
     </header>
 
-    <main class="workspace">
-      <section class="map-shell" aria-label="Mapa conceptual interactivo">
-        <div class="map-title">
-          <div>
-            <h2>La pedagogía: tradición y vigencia</h2>
-            <p>Seleccione un nodo para explorar su explicación ampliada.</p>
-          </div>
-          <div class="legend" aria-label="Leyenda visual">
-            <span><i class="swatch history"></i> Desarrollo histórico</span>
-            <span><i class="swatch principles"></i> Principios y métodos</span>
-            <span><i class="swatch teaching"></i> Formación docente</span>
-            <span><i class="line solid"></i> Relación jerárquica</span>
-            <span><i class="line dotted"></i> Relación transversal</span>
-          </div>
-        </div>
-        <div id="cy" role="img" aria-label="Mapa conceptual interactivo sobre pedagogia"></div>
+    <main id="mapa" class="map-page">
+      <section class="source-note" aria-label="Fuente académica">
+        <p>
+          <strong>Fuente principal:</strong> Bautista Roa, Milton Adolfo. (2025).
+          <em>Tendencias y corrientes pedagógicas emergentes</em>. Ediciones USTA Tunja.
+          Capítulo 1, "La pedagogía: tradición y vigencia", pp. 11-30.
+        </p>
+        <p>
+          Los ejemplos contextualizados corresponden a aplicaciones del autor del mapa a su
+          propia práctica docente y no son citas textuales del libro.
+        </p>
       </section>
 
-      <aside class="detail-panel" aria-live="polite">
-        <p class="panel-kicker">Concepto seleccionado</p>
-        <h2 id="detailTitle">La pedagogía: tradición y vigencia</h2>
-        <p id="detailGroup" class="badge">Nodo central</p>
-        <div id="detailBody"></div>
-      </aside>
+      <section id="conceptMap" class="concept-map" aria-label="Mapa conceptual expandido">
+        <article class="root-card">
+          <span class="node-label">Nodo central</span>
+          <h2>La pedagogía: tradición y vigencia</h2>
+          <p>
+            La pedagogía se comprende como un saber con historia, vigencia y capacidad de
+            orientar la educación actual. No es una receta técnica ni un simple conjunto de
+            estrategias de aula; es una forma de pensar el sentido de educar, la formación
+            humana, la relación docente-estudiante y las decisiones que se toman en contextos
+            sociales, culturales, tecnológicos y éticos concretos.
+          </p>
+        </article>
+
+        <div class="connector main-connector">se organiza en tres relaciones centrales</div>
+
+        <section id="branchGrid" class="branch-grid"></section>
+
+        <div class="connector questions-connector">
+          se problematiza mediante preguntas reflexivas integradas al mapa
+        </div>
+
+        <section id="preguntas" class="questions-map" aria-label="Preguntas reflexivas dentro del mapa"></section>
+      </section>
     </main>
-
-    <section class="source-band">
-      <p>
-        <strong>Fuente principal:</strong> Bautista Roa, Milton Adolfo. (2025).
-        <em>Tendencias y corrientes pedagógicas emergentes</em>. Ediciones USTA Tunja.
-        Capítulo 1, "La pedagogía: tradición y vigencia", pp. 11-30.
-      </p>
-      <p>
-        Los ejemplos contextualizados corresponden a aplicaciones del autor del mapa a su
-        propia práctica docente y no son citas textuales del libro.
-      </p>
-    </section>
-
-    <dialog id="questionsDialog" class="modal">
-      <form method="dialog">
-        <button class="close" aria-label="Cerrar preguntas reflexivas">Cerrar</button>
-      </form>
-      <h2>Preguntas reflexivas y críticas</h2>
-      <div id="questionsList" class="accordion"></div>
-    </dialog>
-
-    <dialog id="aiDialog" class="modal">
-      <form method="dialog">
-        <button class="close" aria-label="Cerrar uso de IA">Cerrar</button>
-      </form>
-      <h2>Transparencia en el uso de IA</h2>
-      <div class="ai-block">
-        <p><strong>Herramientas utilizadas:</strong> ChatGPT y Codex.</p>
-        <p>
-          <strong>Uso de ChatGPT:</strong> apoyo para organizar la información del capítulo,
-          proponer relaciones conceptuales, formular preguntas reflexivas y revisar la redacción.
-        </p>
-        <p>
-          <strong>Uso de Codex:</strong> desarrollo técnico del sitio web interactivo,
-          estructura HTML/CSS/JavaScript, interacción del mapa y preparación para GitHub Pages.
-        </p>
-        <p>
-          <strong>Grado de utilización:</strong> medio en la organización conceptual y alto en
-          la implementación técnica.
-        </p>
-        <p>
-          <strong>Responsabilidad del autor:</strong> la versión final fue revisada, ajustada al
-          contexto docente propio y contrastada con el capítulo trabajado.
-        </p>
-      </div>
-    </dialog>
   </body>
 </html>

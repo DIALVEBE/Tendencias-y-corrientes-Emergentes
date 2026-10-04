@@ -1,388 +1,260 @@
 window.MAP_DATA = {
-  nodes: [
-    {
-      id: "root",
-      label: "La pedagogia:\ntradicion y vigencia",
-      group: "central",
-      title: "La pedagogia: tradicion y vigencia",
-      type: "Nodo central",
-      body:
-        "La unidad recupera el valor actual de la pedagogia para resignificar el sentido de la educacion. No la presenta como una tecnica aislada, sino como un saber con trayectoria historica, dialogo interdisciplinario, principios humanos y exigencias para la formacion docente actual. La pedagogia conserva una tradicion, pero sigue vigente porque puede reinterpretarse, dialogar con otros saberes y orientar decisiones educativas en contextos cambiantes.",
-      relation:
-        "El capitulo articula tradicion, vigencia, principios, metodos y formacion docente como una red de sentido para pensar la educacion hoy."
-    },
+  branches: [
     {
       id: "history",
-      label: "Desarrollo historico\nde la pedagogia",
-      group: "history",
-      title: "Desarrollo historico de la pedagogia",
-      type: "Rama principal",
-      body:
-        "Esta rama muestra que la pedagogia no aparece de manera repentina como disciplina moderna. Antes de consolidarse como saber autonomo, estuvo vinculada a practicas culturales, religiosas, filosoficas, juridicas y medicas. Luego, con la modernidad, busco una identidad propia sin abandonar el dialogo con otros campos. Su historia permite comprender que educar es transmitir, interpretar y recrear experiencia humana acumulada.",
-      relation:
-        "Responde a la relacion solicitada sobre el desarrollo historico de la pedagogia."
+      title: "Desarrollo histórico de la pedagogía",
+      connector: "se comprende desde su",
+      intro:
+        "Esta relación muestra que la pedagogía tiene una trayectoria: primero aparece vinculada a prácticas culturales, religiosas y filosóficas; después busca autonomía disciplinar; y finalmente se fortalece al dialogar con otros saberes.",
+      nodes: [
+        {
+          title: "Antes de la modernidad",
+          connector: "se desarrolla inicialmente vinculada a",
+          body:
+            "En las épocas antigua y medieval, la pedagogía no existe todavía como disciplina autónoma. Se encuentra mezclada con la filosofía, la teología, el derecho, la medicina, la vida comunitaria y las formas tradicionales de transmisión cultural. Educar significa conservar memorias, rituales, prácticas, relatos y modos de formar a la persona dentro de una comunidad.",
+          relation:
+            "Esta etapa permite entender que la pedagogía nace ligada a la formación humana y a la transmisión de experiencia, no solo a la escuela moderna."
+        },
+        {
+          title: "Modernidad y autonomía",
+          connector: "se transforma durante la",
+          body:
+            "Con la modernidad, la pedagogía comienza a buscar identidad propia. Ya no quiere ser únicamente un apéndice de otros saberes, sino un campo capaz de pensar su objeto, sus métodos y sus problemas. Sin embargo, esa autonomía no significa aislamiento: la educación sigue siendo un fenómeno humano, social, histórico, comunicativo, cognitivo y afectivo.",
+          relation:
+            "La pedagogía se afirma como saber específico, pero conserva la necesidad de dialogar con otras disciplinas para comprender la complejidad educativa."
+        },
+        {
+          title: "Interdisciplinariedad",
+          connector: "sin aislarse, dialoga con",
+          body:
+            "La pedagogía se fortalece cuando puede conversar con otros campos sin desaparecer dentro de ellos. El capítulo destaca siete vínculos: filosofía, antropología, sociología, historia, ciencias de la comunicación, ciencias cognitivas y psicología. Cada relación ilumina una dimensión distinta del hecho educativo y evita reducir la enseñanza a técnica o procedimiento.",
+          relation:
+            "Este nodo explica por qué educar exige una mirada amplia: enseñar y aprender ocurren en cuerpos, lenguajes, culturas, memorias, instituciones, emociones y tecnologías.",
+          example:
+            "Incorporar IA generativa en programación no es solo escoger una herramienta. También implica pensar cómo aprenden los estudiantes, qué autonomía desarrollan, qué efectos sociales tiene la tecnología y qué relación pedagógica se construye."
+        },
+        {
+          title: "Filosofía",
+          connector: "se fundamenta con la",
+          body:
+            "La filosofía ayuda a preguntar por la identidad de la pedagogía, su sentido, sus categorías y la validez de su conocimiento. Desde allí aparecen la epistemología de la pedagogía y la filosofía de la educación, que permiten discutir para qué educar, qué idea de ser humano se forma y qué límites tiene el saber pedagógico.",
+          relation:
+            "Aporta fundamento para que la pedagogía no se reduzca a aplicación de técnicas, sino que piense sus razones y finalidades."
+        },
+        {
+          title: "Antropología",
+          connector: "comprende lo humano mediante la",
+          body:
+            "La antropología permite ver la educación como parte del proceso de humanización. Enseñar no es solamente transferir información; también es participar en la construcción cultural de formas de ser, convivir, recordar y proyectarse. La pedagogía se pregunta así cómo las prácticas educativas configuran lo humano.",
+          relation:
+            "Sitúa la formación dentro de culturas concretas y muestra que toda educación transmite una comprensión de humanidad."
+        },
+        {
+          title: "Sociología",
+          connector: "sitúa la educación dentro de la",
+          body:
+            "La sociología recuerda que toda educación ocurre dentro de un orden social. Por eso la pedagogía debe analizar qué se espera que una persona aprenda, qué función social cumple la escuela o la universidad, y si las prácticas educativas reproducen o transforman exclusión, clasismo, racismo, violencia o intolerancia.",
+          relation:
+            "Conecta la pedagogía con las estructuras sociales que atraviesan el aula y condicionan las oportunidades de aprender."
+        },
+        {
+          title: "Historia",
+          connector: "reconoce su memoria a través de la",
+          body:
+            "La pedagogía también es memoria. Sus prácticas actuales tienen antecedentes en personas, instituciones, regiones, relatos y experiencias educativas anteriores. Mirar históricamente permite recuperar voces olvidadas y comprender que el presente pedagógico no aparece de la nada.",
+          relation:
+            "Da profundidad temporal a la pedagogía y ayuda a reconocer continuidades, rupturas y herencias educativas."
+        },
+        {
+          title: "Ciencias de la comunicación",
+          connector: "se realiza como diálogo mediante las",
+          body:
+            "La relación pedagógica es una relación comunicativa. Palabra, escritura, gesto, cuerpo, símbolo, argumento, escucha y diálogo forman parte del ambiente educativo. La manera de explicar, preguntar y conversar no es un adorno de la clase: es parte central de la pedagogía.",
+          relation:
+            "Enseñar implica construir condiciones comunicativas para que el estudiante pueda comprender, expresarse, preguntar y participar.",
+          example:
+            "En programación, un ejemplo ejecutable, una visualización y una pregunta bien formulada pueden comunicar el mismo concepto de formas distintas. Elegir el canal adecuado también es una decisión pedagógica."
+        },
+        {
+          title: "Ciencias cognitivas",
+          connector: "reconsidera el aprendizaje con las",
+          body:
+            "Las ciencias cognitivas acercan la pedagogía a preguntas sobre percepción, memoria, conciencia, plasticidad neuronal, inteligencia artificial y procesos de aprendizaje. Este diálogo es valioso, pero exige cuidado para no reducir la educación al cerebro ni aceptar neuromitos como si fueran explicación suficiente.",
+          relation:
+            "Ayuda a comprender mejor cómo aprenden las personas, sin olvidar que el aprendizaje también es social, afectivo, cultural y ético.",
+          example:
+            "Si un estudiante usa IA para resolver un ejercicio, la pregunta no es solo si llegó a la respuesta correcta, sino qué comprendió, qué pudo explicar, qué decisiones tomó y qué parte del proceso delegó."
+        },
+        {
+          title: "Psicología",
+          connector: "atiende la dimensión afectiva con la",
+          body:
+            "La psicología permite pensar emociones, motivaciones, autonomía, ansiedad, conflictos, moralidad y sentido dentro de la experiencia educativa. El estudiante no aprende como sujeto puramente racional; aprende con historias personales, condiciones emocionales, vínculos y expectativas.",
+          relation:
+            "Recuerda que la pedagogía debe cuidar ambientes de aprendizaje donde razón, afectos y relaciones personales se encuentren."
+        }
+      ]
     },
     {
       id: "principles",
-      label: "Principios\ny metodos",
-      group: "principles",
-      title: "Principios y metodos",
-      type: "Rama principal",
-      body:
-        "Esta rama organiza la dimension normativa y practica de la pedagogia. El capitulo propone el Ser como horizonte, y desde alli despliega principios como verdad, justicia, bien, libertad y belleza del pensamiento. Cada principio se asocia con un metodo: comprender, hacer, obrar, comunicar y sentir o sentipensar. La pedagogia no se reduce a ideas abstractas; transforma esas ideas en formas de actuar educativamente.",
-      relation:
-        "Responde a la relacion solicitada sobre principios y metodos fundamentales."
+      title: "Principios y métodos fundamentales",
+      connector: "se orienta mediante",
+      intro:
+        "Esta relación muestra que la pedagogía tiene un horizonte ético: parte del Ser, vuelve al Ser y se despliega en verdad, justicia, bien, libertad y belleza del pensamiento, cada una con un método asociado.",
+      nodes: [
+        {
+          title: "El Ser",
+          connector: "parte de y retorna al",
+          body:
+            "El Ser es punto de partida y punto de llegada de la pedagogía. La formación busca cuidar, preservar, acrecentar y desplegar lo humano para que la persona pueda realizarse con otros. La educación aparece como construcción de sentido frente al vacío, el egoísmo y la falta de horizonte comunitario.",
+          relation:
+            "Desde el Ser se ordenan los principios pedagógicos; a él vuelven como horizonte de formación integral."
+        },
+        {
+          title: "Verdad → comprender",
+          connector: "se busca mediante",
+          body:
+            "La verdad no se plantea como una respuesta cerrada, sino como búsqueda permanente. Comprender exige desocultar, interpretar, revisar y contrastar lo que se considera verdadero. La pedagogía forma sujetos capaces de preguntar, argumentar y actuar con coherencia frente al conocimiento.",
+          relation:
+            "El método asociado es comprender, porque educar para la verdad implica examinar críticamente lo que se sabe.",
+          example:
+            "En IA generativa, una respuesta bien redactada no basta. El estudiante debe contrastar fuentes, ejecutar código, comprobar datos y justificar por qué considera válida una conclusión."
+        },
+        {
+          title: "Justicia → hacer",
+          connector: "se construye por medio de",
+          body:
+            "La justicia exige equidad, inclusión, respeto y reconocimiento de necesidades concretas. En pedagogía no basta nombrarla; debe traducirse en acciones dentro de la evaluación, el currículo, la participación y las oportunidades reales de aprendizaje.",
+          relation:
+            "El método asociado es hacer, porque la justicia se verifica en prácticas educativas concretas.",
+          example:
+            "Una evaluación técnica puede ser igual para todos y aun así injusta. Una rúbrica clara, retroalimentación y tareas auténticas ayudan a que cada estudiante pueda evidenciar mejor su aprendizaje."
+        },
+        {
+          title: "Bien → obrar",
+          connector: "se orienta hacia el",
+          body:
+            "El Bien se comprende como orientación hacia aquello que perfecciona a la persona y a la comunidad. La pedagogía no debería limitarse a reproducir lo existente; puede abrir posibilidades de transformación, responsabilidad y bien común.",
+          relation:
+            "El método asociado es obrar: actuar éticamente, con conciencia de las consecuencias humanas de cada decisión educativa.",
+          example:
+            "Un proyecto tecnológico no se evalúa solo porque funciona. También conviene preguntar a quién beneficia, qué riesgos introduce y si aporta de verdad a una comunidad."
+        },
+        {
+          title: "Libertad → comunicar",
+          connector: "se proyecta como",
+          body:
+            "La libertad implica superar subordinaciones, dependencias y formas de colonización del pensamiento. En educación, la libertad necesita diálogo, expresión, argumentación y circulación de ideas para convertirse en práctica y no quedar como ideal abstracto.",
+          relation:
+            "El método asociado es comunicar, porque la libertad se aprende y se ejerce en relación con otros.",
+          example:
+            "En programación, la libertad aparece cuando los estudiantes comparan herramientas, justifican decisiones de arquitectura y proponen soluciones, no cuando solo copian el procedimiento del docente."
+        },
+        {
+          title: "Belleza del pensamiento → sentir / sentipensar",
+          connector: "se experimenta mediante",
+          body:
+            "La belleza del pensamiento surge cuando pensar no es repetir rápido, sino detenerse, imaginar, profundizar, sentir y abrirse al asombro. El sentipensar une razón y sensibilidad para comprender mejor la vida humana y las posibilidades de transformación educativa.",
+          relation:
+            "El método asociado es sentir o sentipensar, porque la pedagogía también requiere sensibilidad, afectos y cuidado por la forma en que se piensa.",
+          example:
+            "En ciencia de datos, una solución puede ser correcta y además clara, elegante y comprensible. La forma de visualizar, explicar o estructurar código expresa respeto por el pensamiento del otro."
+        }
+      ]
     },
     {
       id: "teaching",
-      label: "Formacion pedagogica\ndel docente hoy",
-      group: "teaching",
-      title: "Formacion pedagogica del docente hoy",
-      type: "Rama principal",
-      body:
-        "La formacion docente aparece como condicion para que la pedagogia responda a desafios contemporaneos. No basta dominar contenidos o tecnicas. El docente necesita marcos para interpretar la experiencia humana, analizar tecnologia, leer sistemas complejos, cuestionar exclusiones y reconocer voces situadas. Esta formacion fortalece la pedagogia como saber interdisciplinar y como practica con responsabilidad social.",
-      relation:
-        "Responde a la relacion solicitada sobre la formacion pedagogica del docente hoy."
-    },
-    {
-      id: "pre-modern",
-      label: "Antes de\nla modernidad",
-      group: "history",
-      title: "Antes de la modernidad",
-      type: "Desarrollo historico",
-      body:
-        "En las epocas antigua y medieval, la pedagogia no aparece como disciplina autonoma. Se encuentra inmersa en la filosofia, la teologia, el derecho y la medicina, y se manifiesta en la relacion maestro-discipulo, en la transmision de saberes, tradiciones, practicas y memorias. Aun antes de su formalizacion, estaba presente en rituales, ceremonias, mitos y formas comunitarias de conservar la experiencia acumulada.",
-      relation:
-        "Permite comprender que la pedagogia nace vinculada a la transmision cultural y a la formacion humana."
-    },
-    {
-      id: "modernity",
-      label: "Modernidad\ny autonomia",
-      group: "history",
-      title: "Modernidad y autonomia",
-      type: "Desarrollo historico",
-      body:
-        "Con la modernidad, iniciada en el Renacimiento, la pedagogia empieza a buscar una identidad propia. Deja de estar totalmente subordinada a otros saberes y adquiere pretension disciplinar. Esa autonomia no implica aislamiento: la pedagogia comparte problemas con psicologia, sociologia, antropologia, historia, comunicacion, ciencias cognitivas y neurociencias. Su identidad se fortalece al mantener objeto propio y dialogo interdisciplinario.",
-      relation:
-        "Explica el paso hacia una pedagogia con identidad, pero abierta a otros campos."
-    },
-    {
-      id: "interdisciplinary",
-      label: "Interdisciplinariedad",
-      group: "history",
-      title: "Interdisciplinariedad",
-      type: "Desarrollo historico",
-      body:
-        "La pedagogia mantiene su identidad cuando puede relacionarse con otros campos sin quedar reducida a ellos. El capitulo destaca siete relaciones: filosofia, antropologia, sociologia, historia, ciencias de la comunicacion, ciencias cognitivas y psicologia. Cada una observa una dimension distinta del hecho educativo y evita una mirada unica de la educacion.",
-      relation:
-        "Ensenar y aprender son fenomenos humanos, sociales, historicos, comunicativos, cognitivos y afectivos al mismo tiempo.",
-      example:
-        "Incorporar IA generativa en una clase de programacion no es solo elegir una herramienta. Tambien implica preguntas sobre como aprenden los estudiantes, que autonomia desarrollan, que efectos sociales tiene la tecnologia y que relacion pedagogica se construye."
-    },
-    {
-      id: "philosophy",
-      label: "Filosofia",
-      group: "history",
-      title: "Filosofia",
-      type: "Relacion interdisciplinaria",
-      body:
-        "La filosofia ayuda a pensar la identidad de la pedagogia, su objeto de estudio, sus categorias y la validez de su conocimiento. De esta relacion surgen la epistemologia de la pedagogia y la filosofia de la educacion. Permite preguntar por sentido, fundamentos, utilidad y limites del saber pedagogico.",
-      relation:
-        "Fundamenta la pregunta por el conocimiento pedagogico y por la validez de sus categorias."
-    },
-    {
-      id: "anthropology",
-      label: "Antropologia",
-      group: "history",
-      title: "Antropologia",
-      type: "Relacion interdisciplinaria",
-      body:
-        "La antropologia permite estudiar las practicas de ensenanza y aprendizaje como parte del proceso de humanizacion y transmision cultural. Educar no es solo entregar informacion: es participar en un proceso historico mediante el cual una cultura construye y recrea formas de ser humano.",
-      relation:
-        "Comprende la educacion como practica cultural y como proceso de humanizacion."
-    },
-    {
-      id: "sociology",
-      label: "Sociologia",
-      group: "history",
-      title: "Sociologia",
-      type: "Relacion interdisciplinaria",
-      body:
-        "La sociologia muestra que ensenar y aprender siempre ocurre dentro de un orden social. La pedagogia debe preguntarse que se espera que una persona aprenda, que funcion social cumple la educacion y si reproduce o transforma exclusiones, clasismo, racismo, intolerancia o violencia.",
-      relation:
-        "Situa la educacion dentro de estructuras sociales que atraviesan la experiencia educativa."
-    },
-    {
-      id: "memory-history",
-      label: "Historia",
-      group: "history",
-      title: "Historia",
-      type: "Relacion interdisciplinaria",
-      body:
-        "La pedagogia tambien es memoria. Su historia esta compuesta por personas, instituciones, practicas, relatos y experiencias que han dado forma a la educacion. La perspectiva historica pregunta que debe recuperarse del olvido para construir pedagogias cercanas a las culturas, las regiones y la construccion de nacion.",
-      relation:
-        "El presente pedagogico se apoya en trayectorias anteriores y en memorias educativas."
-    },
-    {
-      id: "communication",
-      label: "Ciencias de\nla comunicacion",
-      group: "history",
-      title: "Ciencias de la comunicacion",
-      type: "Relacion interdisciplinaria",
-      body:
-        "La relacion pedagogica es tambien una relacion comunicativa. Emisor y receptor intercambian papeles, y el dialogo constituye la raiz de la educacion. Palabra, escritura, argumento, gesto, cuerpo y simbolos forman parte del ambiente pedagogico.",
-      relation:
-        "La manera de explicar, preguntar, escuchar y construir ambientes de aprendizaje ya es una decision pedagogica.",
-      example:
-        "En programacion, un ejemplo ejecutable, una visualizacion, una explicacion oral y una pregunta bien formulada pueden comunicar el mismo concepto de formas distintas. Elegir canal y lenguaje tambien forma parte de ensenar."
-    },
-    {
-      id: "cognitive",
-      label: "Ciencias\ncognitivas",
-      group: "history",
-      title: "Ciencias cognitivas",
-      type: "Relacion interdisciplinaria",
-      body:
-        "El capitulo vincula la pedagogia contemporanea con neurologia, filosofia de la mente e inteligencia artificial. Surgen preguntas sobre percepcion, conciencia, memoria, plasticidad neuronal, sueno, epigenetica y desarrollo cognitivo. Tambien exige evitar neuromitos y pensar una neuroetica educativa.",
-      relation:
-        "Desafia a comprender mejor como aprenden las personas sin reducir la educacion al funcionamiento cerebral.",
-      example:
-        "Cuando un estudiante usa IA para resolver un ejercicio, la pregunta pedagogica no es solo si obtuvo la respuesta correcta, sino que comprendio, que decisiones tomo y que parte del proceso delego."
-    },
-    {
-      id: "psychology",
-      label: "Psicologia",
-      group: "history",
-      title: "Psicologia",
-      type: "Relacion interdisciplinaria",
-      body:
-        "La psicologia permite analizar afectos, emociones, pasiones, moralidad y autonomia dentro de la educacion. Tambien ayuda a pensar ambientes educativos capaces de enfrentar ansiedad, violencia, perdida de sentido y conflictos que afectan a las comunidades educativas.",
-      relation:
-        "Reconoce que aprender implica motivaciones, emociones, relaciones y condiciones personales."
-    },
-    {
-      id: "being",
-      label: "El Ser",
-      group: "principles",
-      title: "El Ser",
-      type: "Horizonte pedagogico",
-      body:
-        "El Ser es punto de partida y de llegada de la pedagogia. El esfuerzo pedagogico busca cuidar, preservar, acrecentar y desplegar el ser humano para que pueda realizarse en plenitud. La pedagogia aparece como construccion de sentido frente al vacio, la nada y el sinsentido, y como hilo que ayuda a salir del egoismo para construir acuerdos y comunidad.",
-      relation:
-        "El Ser se despliega mediante principios y retorna como horizonte de formacion."
-    },
-    {
-      id: "truth",
-      label: "Verdad",
-      group: "principles",
-      title: "Verdad",
-      type: "Principio",
-      body:
-        "La verdad no aparece como respuesta definitiva, sino como busqueda permanente. El capitulo recupera la idea de desocultar y la necesidad de comprender, revisar y replantear continuamente la existencia. La pedagogia busca la verdad con otros y forma seres capaces de actuar con coherencia.",
-      relation:
-        "Su metodo asociado es comprender, porque comprender exige examinar e interpretar lo que se considera verdadero.",
-      example:
-        "En IA generativa, buscar la verdad implica contrastar resultados, revisar fuentes, ejecutar codigo, comprobar datos y justificar por que una conclusion es valida."
-    },
-    {
-      id: "justice",
-      label: "Justicia",
-      group: "principles",
-      title: "Justicia",
-      type: "Principio",
-      body:
-        "La justicia implica dar a cada persona lo que le corresponde segun sus necesidades y construir relaciones basadas en equidad, respeto e inclusion. Una pedagogia comprometida con la justicia debe traducirse en acciones directas dentro de los espacios educativos.",
-      relation:
-        "Su metodo asociado es hacer: no basta hablar de justicia, hay que transformar practicas evaluativas, curriculares y normativas.",
-      example:
-        "Una rubrica clara, oportunidades de retroalimentacion y tareas autenticas pueden acercar la evaluacion tecnica a criterios de equidad."
-    },
-    {
-      id: "good",
-      label: "Bien",
-      group: "principles",
-      title: "Bien",
-      type: "Principio",
-      body:
-        "El Bien se entiende como orientacion hacia aquello que perfecciona no solo al individuo, sino tambien a la comunidad. El capitulo lo relaciona con voluntad, persistencia y busqueda del bien comun. La pedagogia transformadora abre posibilidades de cambio y no se conforma con reproducir lo existente.",
-      relation:
-        "Su metodo asociado es obrar: actuar eticamente y procurando una vida mejor para los demas.",
-      example:
-        "Un proyecto tecnologico no deberia valorarse solo porque funciona. Tambien debe preguntarse a quien beneficia, que riesgos introduce y si aporta a una comunidad."
-    },
-    {
-      id: "freedom",
-      label: "Libertad",
-      group: "principles",
-      title: "Libertad",
-      type: "Principio",
-      body:
-        "La libertad aparece como aspiracion fundamental de la pedagogia. Ser humano implica superar dependencias, subordinaciones y formas de colonizacion que limitan pensamiento, accion y expresion. Aunque parezca utopica, debe hacerse presente en el acto educativo.",
-      relation:
-        "Su metodo asociado es comunicar, porque la libertad necesita circular entre personas y culturas para hacerse practica.",
-      example:
-        "En proyectos de programacion, la libertad se expresa cuando los estudiantes comparan herramientas, proponen arquitectura y justifican decisiones, no solo cuando replican un procedimiento."
-    },
-    {
-      id: "beauty",
-      label: "Belleza del\npensamiento",
-      group: "principles",
-      title: "Belleza del pensamiento",
-      type: "Principio",
-      body:
-        "Pensar requiere profundidad, silencio, tiempo, interiorizacion y asombro. La belleza del pensamiento aparece cuando se pueden imaginar otras realidades, descubrir nuevos mundos y conectar verdad, justicia, bondad y libertad. El sentipensar integra pensamiento y sensibilidad.",
-      relation:
-        "Su metodo asociado es sentir o sentipensar, porque pensar tambien implica afectos, emociones y experiencias.",
-      example:
-        "En datos o programacion, una solucion puede ser correcta y ademas clara, comprensible y elegante. Presentar una visualizacion o estructurar codigo tambien expresa cuidado por el pensamiento del otro."
-    },
-    { id: "understand", label: "Comprender", group: "method", title: "Comprender", type: "Metodo", body: "Metodo asociado a la verdad. Comprender implica examinar, interpretar, contrastar y revisar lo que se considera verdadero en una situacion educativa.", relation: "Transforma la busqueda de la verdad en ejercicio pedagogico." },
-    { id: "do", label: "Hacer", group: "method", title: "Hacer", type: "Metodo", body: "Metodo asociado a la justicia. Hacer significa llevar la equidad y la inclusion a practicas concretas de aula, curriculo y evaluacion.", relation: "Evita que la justicia quede reducida a discurso." },
-    { id: "act", label: "Obrar", group: "method", title: "Obrar", type: "Metodo", body: "Metodo asociado al bien. Obrar implica actuar eticamente, con responsabilidad y orientacion hacia el bien comun.", relation: "Conecta la decision pedagogica con sus consecuencias humanas." },
-    { id: "communicate", label: "Comunicar", group: "method", title: "Comunicar", type: "Metodo", body: "Metodo asociado a la libertad. Comunicar permite que la libertad circule, se argumente y se convierta en practica compartida.", relation: "La libertad educativa necesita dialogo, expresion y reconocimiento." },
-    { id: "feel", label: "Sentir /\nsentipensar", group: "method", title: "Sentir / sentipensar", type: "Metodo", body: "Metodo asociado a la belleza del pensamiento. Sentir integra afectos, sensibilidad y experiencia en la construccion del pensamiento pedagogico.", relation: "El pensamiento profundo tambien necesita sensibilidad." },
-    {
-      id: "teacher-training",
-      label: "Formacion\ndocente",
-      group: "teaching",
-      title: "Formacion docente",
-      type: "Formacion pedagogica",
-      body:
-        "La formacion docente es decisiva para la calidad educativa y la transformacion social. Un docente no puede limitarse al dominio de contenidos o tecnicas; necesita paradigmas que le permitan interpretar la experiencia humana, analizar criticamente la tecnologia, comprender sistemas complejos y reconocer voces historicamente invisibilizadas.",
-      relation:
-        "Actualiza la pedagogia como saber interdisciplinar ante los desafios del presente."
-    },
-    {
-      id: "phenomenology",
-      label: "Fenomenologia\ny hermeneutica",
-      group: "teaching",
-      title: "Fenomenologia y hermeneutica",
-      type: "Paradigma formativo",
-      body:
-        "La fenomenologia invita al pedagogo a comprender experiencias humanas como dolor, felicidad, fragilidad, vulnerabilidad y contingencia. La hermeneutica agrega la tarea de interpretar gestos, comportamientos, reacciones y acciones. El aula puede verse como texto abierto que el docente necesita leer para orientar su actuacion.",
-      relation:
-        "Permite comprender e interpretar la experiencia educativa situada.",
-      example:
-        "Si varios estudiantes dejan de participar en programacion, conviene interpretar posibles causas: dificultad conceptual, frustracion, velocidad de clase, problemas tecnicos o falta de sentido de la actividad."
-    },
-    {
-      id: "cybernetics",
-      label: "Cibernetica",
-      group: "teaching",
-      title: "Cibernetica",
-      type: "Paradigma formativo",
-      body:
-        "La cibernetica se relaciona con control y con la evolucion de sistemas tecnicos y biologicos. El capitulo la conecta con IA, neurociencias, transhumanismo y digitalizacion educativa. Tambien introduce desafios sobre conocimiento abierto, plataformas digitales, datos y algoritmizacion de la realidad.",
-      relation:
-        "Ayuda a analizar la relacion entre tecnologia, control y educacion.",
-      example:
-        "Los datos de un LMS, GitHub o un asistente de IA pueden apoyar el aprendizaje, pero no deberian reducir al estudiante a metricas de actividad ni convertir la educacion en vigilancia."
-    },
-    {
-      id: "critical",
-      label: "Teoria critica",
-      group: "teaching",
-      title: "Teoria critica",
-      type: "Paradigma formativo",
-      body:
-        "La teoria critica busca justicia, paz, reconciliacion, equidad y visibilizacion de exclusiones. Su aporte consiste en no aceptar el presente como inevitable. Ensenar exige preguntar quien puede hablar, quien queda excluido, que relaciones de poder existen y como crear dialogos donde la diferencia sea escuchada.",
-      relation:
-        "Cuestiona desigualdades y exclusiones dentro y fuera del aula.",
-      example:
-        "Al trabajar con tecnologia puede preguntarse quien tiene acceso al software, que sesgos contiene un modelo y quien asume las consecuencias de una decision automatizada."
-    },
-    {
-      id: "complexity",
-      label: "Sistemas\ny complejidad",
-      group: "teaching",
-      title: "Sistemas y complejidad",
-      type: "Paradigma formativo",
-      body:
-        "La teoria de sistemas y la complejidad rechazan la idea de que los fenomenos educativos puedan entenderse de manera aislada. La realidad esta compuesta por multiples relaciones, estructuras, actores, procesos y perspectivas. Por eso se necesita una mirada multivoca y transdisciplinaria.",
-      relation:
-        "Comprende el aula como sistema donde confluyen realidades sociales, tecnologicas, historicas y subjetivas.",
-      example:
-        "La dificultad de un estudiante puede involucrar conocimientos previos, tiempo, complejidad de la tarea, retroalimentacion, herramientas, conectividad y expectativas de evaluacion."
-    },
-    {
-      id: "decolonial",
-      label: "Pensamiento\ndecolonial",
-      group: "teaching",
-      title: "Pensamiento decolonial",
-      type: "Paradigma formativo",
-      body:
-        "El pensamiento decolonial invita a mirar desde contextos, territorios y sujetos invisibilizados por visiones dominantes. Sus giros linguistico, subjetivo, corporal y afectivo cuestionan dependencias eurocentricas y recuperan saberes situados. Lenguaje, subjetividad, cuerpo y afectos amplian lo que cuenta como conocimiento.",
-      relation:
-        "Reconoce otras voces, territorios y memorias en la formacion pedagogica.",
-      example:
-        "En IA y datos, tambien pueden trabajarse problemas colombianos, regionales o institucionales para que la tecnologia dialogue con realidades cercanas."
+      title: "Formación pedagógica del docente hoy",
+      connector: "se actualiza a través de la",
+      intro:
+        "Esta relación muestra que el docente actual necesita formación pedagógica permanente para interpretar experiencias, analizar tecnología, cuestionar exclusiones, comprender sistemas complejos y reconocer territorios y voces situadas.",
+      nodes: [
+        {
+          title: "Formación docente",
+          connector: "requiere actualización permanente mediante",
+          body:
+            "La formación docente es una condición decisiva para la calidad educativa y la transformación social. No basta dominar contenidos o herramientas; el docente necesita marcos para interpretar la experiencia humana, comprender la tecnología, leer la complejidad del aula y tomar decisiones pedagógicas responsables.",
+          relation:
+            "Actualiza la pedagogía como saber vivo que responde a desafíos contemporáneos sin perder su horizonte humano."
+        },
+        {
+          title: "Fenomenología y hermenéutica",
+          connector: "comprende e interpreta la experiencia mediante",
+          body:
+            "La fenomenología invita a comprender experiencias humanas como dolor, alegría, fragilidad, vulnerabilidad y contingencia. La hermenéutica agrega la tarea de interpretar gestos, silencios, reacciones, comportamientos y acciones. El aula puede leerse como un texto abierto que exige atención pedagógica.",
+          relation:
+            "Ayuda al docente a no juzgar de inmediato, sino a interpretar lo que ocurre en la experiencia educativa.",
+          example:
+            "Si varios estudiantes dejan de participar en programación, no basta decir que no estudiaron. Puede haber dificultad conceptual, frustración, velocidad excesiva, fallas técnicas o falta de sentido de la actividad."
+        },
+        {
+          title: "Cibernética",
+          connector: "analiza tecnología, control y educación desde la",
+          body:
+            "La cibernética permite pensar control, sistemas técnicos, inteligencia artificial, datos, plataformas, automatización y digitalización educativa. Su aporte no es usar tecnología sin crítica, sino entender cómo las herramientas pueden apoyar, dirigir o incluso vigilar procesos de aprendizaje.",
+          relation:
+            "Forma al docente para analizar la tecnología educativa sin cederle el criterio pedagógico.",
+          example:
+            "Los datos de un LMS, GitHub o una IA pueden orientar retroalimentación, pero no deberían reducir al estudiante a métricas de actividad ni convertir la educación en vigilancia."
+        },
+        {
+          title: "Teoría crítica",
+          connector: "cuestiona desigualdades y exclusiones mediante la",
+          body:
+            "La teoría crítica invita a preguntar por justicia, equidad, exclusión, poder, participación y posibilidad de transformación. Enseñar no es aceptar el presente como inevitable; también es abrir espacios para que las diferencias sean escuchadas y para que las prácticas educativas puedan revisarse.",
+          relation:
+            "Ubica la pedagogía frente a relaciones de poder y desigualdades que atraviesan el aula.",
+          example:
+            "Al trabajar con tecnología, conviene preguntar quién tiene acceso al software, qué sesgos puede contener un modelo y quién asume las consecuencias de una decisión automatizada."
+        },
+        {
+          title: "Sistemas y complejidad",
+          connector: "comprende el aula como sistema mediante",
+          body:
+            "La teoría de sistemas y la complejidad muestran que los fenómenos educativos no pueden explicarse desde una sola causa. En el aula confluyen actores, recursos, tiempos, emociones, instituciones, tecnologías, culturas, historias y expectativas. Por eso se necesita una mirada multívoca y transdisciplinaria.",
+          relation:
+            "Permite comprender la educación como red de relaciones, no como suma de eventos aislados.",
+          example:
+            "La dificultad de un estudiante puede depender de conocimientos previos, tiempo disponible, conectividad, claridad de la tarea, retroalimentación, trabajo en equipo y criterios de evaluación."
+        },
+        {
+          title: "Pensamiento decolonial",
+          connector: "reconoce otras voces y territorios desde el",
+          body:
+            "El pensamiento decolonial invita a mirar desde contextos, territorios y sujetos invisibilizados por visiones dominantes. Sus giros lingüístico, subjetivo, corporal y afectivo permiten cuestionar dependencias eurocéntricas y recuperar saberes situados, cuerpos, memorias y afectos.",
+          relation:
+            "Amplía la pedagogía al reconocer que el conocimiento también se produce desde territorios, historias y experiencias concretas.",
+          example:
+            "En IA y datos, no todo ejemplo debe venir de grandes empresas globales. También pueden trabajarse problemas colombianos, regionales o institucionales para que la tecnología dialogue con realidades cercanas."
+        }
+      ]
     }
-  ],
-  edges: [
-    ["root", "history", "se comprende desde su"],
-    ["root", "principles", "se orienta mediante"],
-    ["root", "teaching", "se actualiza a traves de la"],
-    ["history", "pre-modern", "se desarrolla inicialmente vinculada a"],
-    ["history", "modernity", "se transforma durante la"],
-    ["modernity", "interdisciplinary", "sin aislarse, dialoga con"],
-    ["interdisciplinary", "philosophy", "se fundamenta con la"],
-    ["interdisciplinary", "anthropology", "comprende lo humano mediante la"],
-    ["interdisciplinary", "sociology", "situa la educacion dentro de la"],
-    ["interdisciplinary", "memory-history", "reconoce su memoria a traves de la"],
-    ["interdisciplinary", "communication", "se realiza como dialogo mediante las"],
-    ["interdisciplinary", "cognitive", "reconsidera el aprendizaje con las"],
-    ["interdisciplinary", "psychology", "atiende la dimension afectiva con la"],
-    ["principles", "being", "parte de y retorna al"],
-    ["being", "truth", "se despliega como"],
-    ["being", "justice", "se despliega como"],
-    ["being", "good", "se despliega como"],
-    ["being", "freedom", "se despliega como"],
-    ["being", "beauty", "se despliega como"],
-    ["truth", "understand", "se busca mediante"],
-    ["justice", "do", "se construye por medio de"],
-    ["good", "act", "se orienta hacia el bien al"],
-    ["freedom", "communicate", "se proyecta al"],
-    ["beauty", "feel", "se experimenta mediante"],
-    ["teaching", "teacher-training", "requiere actualizacion permanente mediante"],
-    ["teacher-training", "phenomenology", "comprende e interpreta la experiencia mediante"],
-    ["teacher-training", "cybernetics", "analiza tecnologia y control desde la"],
-    ["teacher-training", "critical", "cuestiona desigualdades mediante la"],
-    ["teacher-training", "complexity", "comprende el aula como sistema mediante"],
-    ["teacher-training", "decolonial", "reconoce otras voces desde el"]
-  ],
-  crossEdges: [
-    ["cognitive", "cybernetics", "convergen hoy en debates sobre IA y aprendizaje"],
-    ["sociology", "justice", "problematiza las desigualdades que la justicia busca transformar"],
-    ["philosophy", "truth", "fundamenta la pregunta por el conocimiento y su validez"],
-    ["communication", "freedom", "hace posible comunicar y ejercer la libertad"],
-    ["psychology", "phenomenology", "coinciden en atender experiencia, afectos y subjetividad"],
-    ["decolonial", "memory-history", "recupera voces y memorias invisibilizadas"]
   ],
   questions: [
     {
-      q: "¿Que cambia en mi practica docente si asumo que la pedagogia no es una tecnica ni un paso a paso?",
+      q: "¿Qué cambia en mi práctica docente si asumo que la pedagogía no es una técnica ni un paso a paso?",
       a:
-        "Cambia la manera de planear una clase. Una tecnica puede indicar como usar una herramienta, pero la pedagogia obliga a preguntarse para que se usa, que tipo de aprendizaje se quiere provocar, que relacion se construye con el estudiante y que sentido tiene la actividad dentro de su formacion. En programacion o IA, no basta ensenar a ejecutar un algoritmo o usar un modelo. Tambien es necesario decidir si la actividad favorece comprension, autonomia, argumentacion y transferencia a nuevos problemas."
+        "Cambia la manera de planear una clase: ya no basta escoger una herramienta o actividad, sino justificar para qué se usa, qué aprendizaje provoca, qué relación construye con el estudiante y qué sentido tiene dentro de su formación. En programación o IA, esto implica formar comprensión, autonomía, argumentación y transferencia, no solo ejecución de procedimientos."
     },
     {
-      q: "¿Como puede un docente incorporar inteligencia artificial sin ceder su autonomia pedagogica a la herramienta?",
+      q: "¿Cómo incorporar inteligencia artificial sin ceder la autonomía pedagógica a la herramienta?",
       a:
-        "La IA deberia ser un medio y no el criterio que define por si mismo que ensenar, como evaluar o que cuenta como aprendizaje. La autonomia pedagogica se conserva cuando el docente formula objetivos, disena situaciones de aprendizaje, decide evidencias y usa la tecnologia criticamente. Una respuesta generada por IA puede ser punto de partida para analizar, verificar, depurar, comparar o argumentar; no tendria que convertirse automaticamente en producto final."
+        "La IA debe ser medio y no criterio final. El docente conserva autonomía cuando define objetivos, evidencias, preguntas y formas de evaluación. Una respuesta generada por IA puede servir para verificar, comparar, depurar, argumentar o discutir, pero no reemplaza el juicio pedagógico sobre lo que el estudiante comprendió."
     },
     {
-      q: "¿Puede una evaluacion ser tecnicamente eficiente y, al mismo tiempo, pedagogicamente injusta?",
+      q: "¿Puede una evaluación ser técnicamente eficiente y pedagógicamente injusta?",
       a:
-        "Si. Una evaluacion puede estar automatizada, producir resultados rapidamente y aplicar el mismo procedimiento a todos, pero eso no garantiza justicia. La justicia se relaciona con equidad, respeto, inclusion y transformacion de practicas evaluativas. En areas tecnicas, una evaluacion justa puede combinar ejecucion, explicacion, razonamiento, revision del proceso y retroalimentacion."
+        "Sí. Una evaluación puede ser rápida, automática y uniforme, pero aun así no permitir que todos evidencien su aprendizaje. La justicia pedagógica exige revisar criterios, oportunidades de mejora, retroalimentación, contexto y sentido de la tarea. La eficiencia no debe reemplazar la equidad."
     },
     {
-      q: "¿Como evitar que la formacion tecnologica reproduzca una unica vision del conocimiento?",
+      q: "¿Cómo evitar que la formación tecnológica reproduzca una única visión del conocimiento?",
       a:
-        "El pensamiento decolonial y la teoria de la complejidad invitan a reconocer que todo conocimiento se produce en contextos y que ningun punto de vista explica por si solo una realidad compleja. En Ingenieria de Sistemas se pueden incorporar situaciones colombianas, regionales, institucionales o comunitarias, para que el estudiante aprenda tecnologia y tambien piense territorio, actores y consecuencias."
+        "Se evita incorporando complejidad y mirada decolonial: no trabajar solo con ejemplos globales, documentación dominante o problemas empresariales estandarizados. También deben aparecer contextos colombianos, regionales, institucionales y comunitarios que permitan preguntar para quién y para qué se usa la tecnología."
     },
     {
-      q: "¿Que significa formar para la libertad cuando estudiantes y docentes dependen cada vez mas de plataformas, algoritmos y sistemas automaticos?",
+      q: "¿Qué significa formar para la libertad en medio de plataformas, algoritmos y sistemas automáticos?",
       a:
-        "Formar para la libertad no significa rechazar la tecnologia, sino evitar una relacion de dependencia acritica. En el contexto digital, implica ensenar a comparar herramientas, comprender sus limites, cuestionar recomendaciones algoritmicas, proteger datos, justificar decisiones y mantener criterio propio. La tecnologia deberia ampliar la capacidad de pensar y actuar, no reemplazarla."
+        "Significa enseñar a usar tecnología sin dependencia acrítica: comparar herramientas, conocer límites, cuestionar recomendaciones algorítmicas, proteger datos y justificar decisiones. Un estudiante libre no es quien usa más plataformas, sino quien puede elegirlas conscientemente y sostener criterio propio."
     }
   ]
 };
