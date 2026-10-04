@@ -204,15 +204,19 @@ button:focus-visible {
 .node-label,
 .connector-label {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   border-radius: 999px;
-  padding: 5px 10px;
+  padding: 7px 14px;
   color: #fff;
   background: var(--navy);
-  font-size: 0.75rem;
+  font-size: 0.86rem;
   font-weight: 850;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
 }
 
 .root-card h2 {
@@ -346,6 +350,8 @@ button:focus-visible {
 .connector-label {
   grid-column: 1 / -1;
   grid-row: 2;
+  justify-self: center;
+  margin: 2px auto 0;
   color: #111827;
   background: #f8fafc;
   box-shadow: 5px 5px 0 rgba(17, 24, 39, 0.35);
@@ -395,17 +401,21 @@ button:focus-visible {
 
 .node-card::before {
   content: attr(data-connector);
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   max-width: 100%;
-  margin: -2px 0 10px;
+  margin: -2px auto 12px;
   border-radius: 999px;
-  padding: 4px 9px;
+  padding: 6px 12px;
   color: #334155;
   background: #f8fafc;
   box-shadow: 4px 4px 0 rgba(17, 24, 39, 0.28);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 820;
+  text-align: center;
+  line-height: 1.15;
 }
 
 .node-card h3,
