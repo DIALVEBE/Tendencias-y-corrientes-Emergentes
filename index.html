@@ -31,6 +31,8 @@
       <nav class="actions" aria-label="Acciones del mapa">
         <a href="#mapa">Mapa</a>
         <a href="#preguntas">Preguntas reflexivas</a>
+        <button type="button" id="expandAllBtn">Expandir todo</button>
+        <button type="button" id="collapseAllBtn">Contraer todo</button>
         <button type="button" id="captureBtn">Modo captura</button>
         <button type="button" id="exportBtn">Exportar PNG</button>
       </nav>
@@ -49,28 +51,24 @@
         </p>
       </section>
 
-      <section id="conceptMap" class="concept-map" aria-label="Mapa conceptual expandido">
-        <article class="root-card">
-          <span class="node-label">Nodo central</span>
-          <h2>La pedagogía: tradición y vigencia</h2>
-          <p>
-            La pedagogía se comprende como un saber con historia, vigencia y capacidad de
-            orientar la educación actual. No es una receta técnica ni un simple conjunto de
-            estrategias de aula; es una forma de pensar el sentido de educar, la formación
-            humana, la relación docente-estudiante y las decisiones que se toman en contextos
-            sociales, culturales, tecnológicos y éticos concretos.
-          </p>
-        </article>
-
-        <div class="connector main-connector">se organiza en tres relaciones centrales</div>
-
-        <section id="branchGrid" class="branch-grid"></section>
-
-        <div class="connector questions-connector">
-          se problematiza mediante preguntas reflexivas integradas al mapa
+      <section id="conceptMap" class="concept-map mind-map" aria-label="Mapa mental expandible">
+        <div class="mind-core">
+          <article class="root-card">
+            <span class="node-label">Nodo central</span>
+            <h2>La pedagogía: tradición y vigencia</h2>
+            <p>
+              La pedagogía se comprende como un saber con historia, vigencia y capacidad de
+              orientar la educación actual. No es una receta técnica ni un simple conjunto de
+              estrategias de aula; es una forma de pensar el sentido de educar, la formación
+              humana, la relación docente-estudiante y las decisiones que se toman en contextos
+              sociales, culturales, tecnológicos y éticos concretos.
+            </p>
+          </article>
         </div>
 
-        <section id="preguntas" class="questions-map" aria-label="Preguntas reflexivas dentro del mapa"></section>
+        <section id="branchGrid" class="mind-branches"></section>
+
+        <section id="preguntas" class="question-branch" aria-label="Preguntas reflexivas dentro del mapa"></section>
       </section>
     </main>
   </body>

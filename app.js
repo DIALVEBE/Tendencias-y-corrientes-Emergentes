@@ -24,32 +24,62 @@
 
   branchGrid.innerHTML = data.branches
     .map(
-      (branch) => `
-        <section class="branch ${branch.id}" aria-label="${branch.title}">
-          <div class="branch-header">
+      (branch, index) => `
+        <details class="branch mind-branch ${branch.id} branch-${index + 1}" open>
+          <summary class="branch-header">
             <span class="connector-label">${branch.connector}</span>
-            <h2>${branch.title}</h2>
-            <p class="branch-intro">${branch.intro}</p>
-          </div>
+            <span class="branch-title">${branch.title}</span>
+            <span class="toggle-text">Expandir / contraer</span>
+          </summary>
+          <p class="branch-intro">${branch.intro}</p>
           <div class="branch-flow">
             ${branch.nodes.map(nodeTemplate).join("")}
           </div>
-        </section>
+        </details>
       `
     )
     .join("");
 
-  questions.innerHTML = data.questions
-    .map(
-      (item, index) => `
-        <article class="question-card">
-          <span class="node-label">Pregunta ${index + 1}</span>
-          <h3>${item.q}</h3>
-          <p>${item.a}</p>
-        </article>
-      `
-    )
-    .join("");
+  questions.innerHTML = `
+      <details class="branch mind-branch questions" open>
+        <summary class="branch-header">
+          <span class="connector-label">se problematiza mediante</span>
+          <span class="branch-title">Preguntas reflexivas</span>
+          <span class="toggle-text">Expandir / contraer</span>
+        </summary>
+        <p class="branch-intro">
+          Estas preguntas integran la lectura del capítulo con decisiones de práctica docente,
+          tecnología, justicia, autonomía y libertad.
+        </p>
+        <div class="questions-map">
+          ${data.questions
+            .map(
+              (item, index) => `
+                <article class="question-card">
+                  <span class="node-label">Pregunta ${index + 1}</span>
+                  <h3>${item.q}</h3>
+                  <p>${item.a}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </details>
+    `;
+
+  const allDetails = () => document.querySelectorAll(".mind-branch");
+
+  document.getElementById("expandAllBtn").addEventListener("click", () => {
+    allDetails().forEach((details) => {
+      details.open = true;
+    });
+  });
+
+  document.getElementById("collapseAllBtn").addEventListener("click", () => {
+    allDetails().forEach((details) => {
+      details.open = false;
+    });
+  });
 
   const captureBtn = document.getElementById("captureBtn");
   captureBtn.addEventListener("click", () => {

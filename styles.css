@@ -31,7 +31,7 @@ body {
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   display: grid;
   grid-template-columns: minmax(320px, 0.9fr) minmax(380px, 1.1fr);
   gap: 14px 28px;
@@ -119,7 +119,7 @@ button:focus-visible {
   display: grid;
   gap: 5px;
   max-width: 1440px;
-  margin: 0 auto 18px;
+  margin: 0 auto 20px;
   border: 1px solid var(--line);
   border-left: 5px solid var(--navy);
   border-radius: 8px;
@@ -129,26 +129,67 @@ button:focus-visible {
   line-height: 1.45;
 }
 
-.concept-map {
+.mind-map {
+  position: relative;
   max-width: 1680px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(360px, 0.92fr) minmax(300px, 1fr);
+  grid-template-areas:
+    "core core core"
+    "history principles teaching"
+    "questions questions questions";
+  gap: 26px 28px;
+  align-items: start;
+}
+
+.mind-map::before {
+  content: "";
+  position: absolute;
+  inset: 318px 14% auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  pointer-events: none;
+}
+
+.mind-map::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 238px;
+  width: 2px;
+  height: 420px;
+  background: linear-gradient(180deg, transparent, var(--line), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.mind-core {
+  position: relative;
+  z-index: 2;
+  grid-area: core;
+  align-self: center;
+  max-width: 900px;
   margin: 0 auto;
 }
 
+.mind-branches {
+  display: contents;
+}
+
 .root-card,
-.branch,
+.mind-branch,
 .node-card,
 .question-card {
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--paper);
   box-shadow: 0 14px 36px rgba(15, 23, 42, 0.07);
 }
 
 .root-card {
-  max-width: 980px;
-  margin: 0 auto;
-  border-top: 6px solid var(--navy);
-  padding: clamp(20px, 3vw, 34px);
+  border-top: 7px solid var(--navy);
+  padding: clamp(22px, 3vw, 34px);
   text-align: center;
 }
 
@@ -167,9 +208,9 @@ button:focus-visible {
 }
 
 .root-card h2 {
-  margin: 10px 0 10px;
+  margin: 10px 0;
   color: var(--navy);
-  font-size: clamp(1.7rem, 3vw, 3rem);
+  font-size: clamp(1.55rem, 2.7vw, 2.55rem);
   line-height: 1.08;
 }
 
@@ -182,87 +223,139 @@ button:focus-visible {
   line-height: 1.6;
 }
 
-.connector {
+.mind-branch {
   position: relative;
-  width: fit-content;
-  max-width: min(760px, 100%);
-  margin: 18px auto;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 8px 18px;
-  color: #253449;
-  background: #fff;
-  font-weight: 850;
-  text-align: center;
+  z-index: 2;
+  overflow: clip;
 }
 
-.connector::before,
-.connector::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: 2px;
-  height: 18px;
-  background: var(--line);
-  transform: translateX(-50%);
-}
-
-.connector::before {
-  bottom: 100%;
-}
-
-.connector::after {
-  top: 100%;
-}
-
-.branch-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  align-items: start;
-}
-
-.branch {
-  overflow: hidden;
-}
-
-.branch.history {
+.mind-branch.history {
+  grid-area: history;
   border-top: 7px solid var(--history);
 }
 
-.branch.principles {
+.mind-branch.principles {
+  grid-area: principles;
   border-top: 7px solid var(--principles);
 }
 
-.branch.teaching {
+.mind-branch.teaching {
+  grid-area: teaching;
   border-top: 7px solid var(--teaching);
 }
 
-.branch-header {
-  padding: 18px;
-  border-bottom: 1px solid var(--line);
-  background: #fbfdff;
+.question-branch {
+  display: contents;
 }
 
-.branch h2 {
-  margin: 8px 0 8px;
+.mind-branch.questions {
+  grid-area: questions;
+  border-top: 7px solid var(--questions);
+}
+
+.mind-branch::before {
+  content: "";
+  position: absolute;
+  background: var(--line);
+  pointer-events: none;
+}
+
+.mind-branch.history::before,
+.mind-branch.teaching::before {
+  top: 70px;
+  width: 28px;
+  height: 2px;
+}
+
+.mind-branch.history::before {
+  right: -28px;
+}
+
+.mind-branch.teaching::before {
+  left: -28px;
+}
+
+.mind-branch.principles::before,
+.mind-branch.questions::before {
+  left: 50%;
+  top: -27px;
+  width: 2px;
+  height: 27px;
+  transform: translateX(-50%);
+}
+
+.branch-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 17px 18px;
+  border-bottom: 1px solid var(--line);
+  background: #fbfdff;
+  cursor: pointer;
+  list-style: none;
+}
+
+.branch-header::-webkit-details-marker {
+  display: none;
+}
+
+.branch-header::after {
+  content: "−";
+  width: 30px;
+  height: 30px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
   color: var(--navy);
-  font-size: clamp(1.18rem, 1.5vw, 1.55rem);
-  line-height: 1.15;
+  background: #eaf1fb;
+  font-weight: 900;
+}
+
+.mind-branch:not([open]) .branch-header::after {
+  content: "+";
+}
+
+.branch-title {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  color: var(--navy);
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
+  font-weight: 900;
+  line-height: 1.14;
+}
+
+.toggle-text {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.connector-label {
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 
 .branch-intro {
   margin: 0;
+  padding: 16px 18px 0;
 }
 
-.branch-flow {
+.branch-flow,
+.questions-map {
   display: grid;
   gap: 12px;
   padding: 16px;
 }
 
-.node-card {
-  position: relative;
+.mind-branch.questions .questions-map {
+  grid-template-columns: repeat(5, minmax(190px, 1fr));
+}
+
+.node-card,
+.question-card {
   padding: 15px;
   box-shadow: none;
 }
@@ -317,36 +410,35 @@ button:focus-visible {
   color: #0f172a;
 }
 
-.history .connector-label,
-.history .node-label {
+.history .connector-label {
   background: var(--history);
 }
 
-.principles .connector-label,
-.principles .node-label {
+.principles .connector-label {
   background: var(--principles);
 }
 
-.teaching .connector-label,
-.teaching .node-label {
+.teaching .connector-label {
   background: var(--teaching);
 }
 
-.questions-map {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(190px, 1fr));
-  gap: 14px;
-}
-
-.question-card {
-  border-top: 6px solid var(--questions);
-  padding: 15px;
-  box-shadow: none;
-}
-
+.questions .connector-label,
 .question-card .node-label {
-  margin-bottom: 9px;
   background: var(--questions);
+}
+
+.mind-branch:not([open]) {
+  align-self: start;
+}
+
+.mind-branch:not([open]) .branch-header {
+  border-bottom: 0;
+}
+
+.mind-branch:not([open]) .branch-intro,
+.mind-branch:not([open]) .branch-flow,
+.mind-branch:not([open]) .questions-map {
+  display: none;
 }
 
 .capture-mode .topbar {
@@ -361,13 +453,25 @@ button:focus-visible {
   padding-top: 12px;
 }
 
-@media (max-width: 1220px) {
-  .branch-grid,
-  .questions-map {
+@media (max-width: 1320px) {
+  .mind-map {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "core"
+      "history"
+      "principles"
+      "teaching"
+      "questions";
+    gap: 18px;
   }
 
-  .branch-flow {
+  .mind-map::before,
+  .mind-map::after,
+  .mind-branch::before {
+    display: none;
+  }
+
+  .mind-branch.questions .questions-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -379,13 +483,22 @@ button:focus-visible {
     padding: 14px;
   }
 
-  .branch-flow {
-    grid-template-columns: 1fr;
-  }
-
   .actions a,
   button {
     flex: 1 1 150px;
+  }
+
+  .branch-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .connector-label,
+  .toggle-text {
+    grid-column: 1 / -1;
+  }
+
+  .mind-branch.questions .questions-map {
+    grid-template-columns: 1fr;
   }
 }
 
