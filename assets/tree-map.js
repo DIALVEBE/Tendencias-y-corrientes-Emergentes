@@ -36,6 +36,12 @@
     if (line.length) lines.push(line.join(' '));
     return lines.slice(0, 3);
   };
+  const wrapMany = (text, max = 20) => {
+    const words = text.split(' '), lines = [], line = [];
+    words.forEach(word => { if ((line.join(' ').length + word.length + 1) > max && line.length) { lines.push(line.join(' ')); line.length = 0; } line.push(word); });
+    if (line.length) lines.push(line.join(' '));
+    return lines;
+  };
   function renderMap(host, tree) {
     const data = [
       ...tree.top.map((label, i) => ({ id: `${tree.ids.top}${i + 1}`, code: `${tree.ids.top.toUpperCase()}${i + 1}`, label, kind: tree.topKind, row: 'top', index: i })),
@@ -62,7 +68,7 @@
     dialog.querySelector('.tree-dialog-close').addEventListener('click', () => dialog.close()); dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
   }
   function renderProblemMap(host, tree) {
-    const W = 1800, H = 1000, nodeW = 220, nodeH = 94, gap = 8, start = 30;
+    const W = 1920, H = 1080, nodeW = 230, nodeH = 108, start = 25;
     const nodes = [
       ...tree.top.map((label, i) => ({ id: `${tree.ids.top}${i + 1}`, code: `${tree.ids.top.toUpperCase()}${i + 1}`, label, row: 'top', index: i })),
       ...tree.middle.map((label, i) => ({ id: `${tree.ids.middle}${i + 1}`, code: `${tree.ids.middle.toUpperCase()}${i + 1}`, label, row: 'middle', index: i })),
@@ -70,20 +76,53 @@
       ...tree.lower.map((label, i) => ({ id: `${tree.ids.lower}${i + 1}`, code: `${tree.ids.lower.toUpperCase()}${i + 1}`, label, row: 'lower', index: i })),
       ...tree.bottom.map((label, i) => ({ id: `${tree.ids.bottom}${i + 1}`, code: `${tree.ids.bottom.toUpperCase()}${i + 1}`, label, row: 'bottom', index: i }))
     ];
+    const centralW = 520, centralH = 140;
     const x = i => start + i * ((W - (2 * start) - nodeW) / 7);
-    const pos = n => n.row === 'central' ? { x: W / 2 - nodeW / 2, y: 445 } : n.row === 'bottom' ? { x: W / 2 - nodeW / 2 - 280 + n.index * 280, y: 855 } : { x: x(n.index), y: n.row === 'top' ? 35 : n.row === 'middle' ? 235 : 650 };
-    const center = p => p.x + nodeW / 2;
-    const edge = (a, b, busY) => { const pa = pos(a), pb = pos(b); return `<path class="tree-edge" d="M ${center(pa)} ${pa.y + nodeH} V ${busY} H ${center(pb)} V ${pb.y}"/>`; };
+    const size = n => n.row === 'central' ? { w: centralW, h: centralH } : { w: nodeW, h: nodeH };
+    const pos = n => n.row === 'central' ? { x: W / 2 - centralW / 2, y: 480 } : n.row === 'bottom' ? { x: W / 2 - nodeW / 2 - 300 + n.index * 300, y: 910 } : { x: x(n.index), y: n.row === 'top' ? 32 : n.row === 'middle' ? 270 : 700 };
+    const center = n => pos(n).x + size(n).w / 2;
+    const topPoint = n => pos(n).y;
+    const bottomPoint = n => pos(n).y + size(n).h;
+    const vertical = (n, y) => `M ${center(n)} ${bottomPoint(n)} V ${y}`;
+    const downTo = (n, y) => `M ${center(n)} ${y} V ${topPoint(n)}`;
+    const generatedDetails = {
+      e1: '<p><strong>E1 · Menor autonomía para resolver y defender problemas.</strong></p><p>Cuando una solución llega terminada, disminuye la oportunidad de practicar, probar casos límite y explicar las decisiones propias.</p>',
+      e2: '<p><strong>E2 · Abundancia de productos con comprensión superficial.</strong></p><p>La producción de materiales puede crecer sin que aumenten en la misma proporción la comprensión, la pertinencia o la calidad del aprendizaje.</p>',
+      e3: '<p><strong>E3 · Calificaciones que reflejan de forma incompleta las competencias.</strong></p><p>Un producto correcto o visualmente convincente no siempre permite verificar el razonamiento y la competencia real.</p>',
+      e4: '<p><strong>E4 · Errores repetidos y debilidad metacognitiva.</strong></p><p>Sin retroalimentación durante el proceso, los errores pueden mantenerse hasta el cierre de la actividad.</p>',
+      e5: '<p><strong>E5 · Dificultad para transferir saberes.</strong></p><p>Cuando las tareas no se conectan con situaciones reales, resulta más difícil aplicar lo aprendido en un caso nuevo.</p>',
+      e6: '<p><strong>E6 · Brechas ocultas por productos colectivos.</strong></p><p>El trabajo grupal puede ocultar vacíos técnicos si no existen momentos individuales de práctica y explicación.</p>',
+      e7: '<p><strong>E7 · Participación y oportunidades asimétricas.</strong></p><p>Las diferencias de acceso, tiempo y competencias tecnológicas generan experiencias de aprendizaje desiguales.</p>',
+      e8: '<p><strong>E8 · Tensiones de confianza y autoría.</strong></p><p>La falta de acuerdos sobre IA y autoría produce incertidumbre para estudiantes y docentes.</p>',
+      i1: '<p><strong>I1 · Las tareas valoran principalmente el resultado terminado.</strong></p><p>Si no se solicitan evidencias de proceso, se vuelve difícil distinguir comprensión, apoyo recibido y autoría.</p>',
+      i2: '<p><strong>I2 · Tiempo limitado para revisar propuestas automatizadas.</strong></p><p>La falta de rutinas de validación puede permitir que materiales plausibles contengan errores o no respondan al contexto del grupo.</p>',
+      i3: '<p><strong>I3 · Instrumentos que priorizan la entrega.</strong></p><p>Una evaluación centrada en el archivo final deja pocas evidencias del razonamiento y de las decisiones tomadas.</p>',
+      i4: '<p><strong>I4 · Faltan hitos intermedios y autoevaluación.</strong></p><p>Sin momentos para revisar y corregir, la retroalimentación llega cuando ya no puede transformar el aprendizaje.</p>',
+      i5: '<p><strong>I5 · Escasa articulación con contextos reales.</strong></p><p>La desconexión entre asignaturas, problemas y experiencias reduce el sentido de las actividades.</p>',
+      i6: '<p><strong>I6 · Se prioriza completar el proyecto grupal.</strong></p><p>La presión por terminar puede reducir la experimentación individual y la demostración de competencias.</p>',
+      i7: '<p><strong>I7 · Diferencias en conectividad, equipos y tiempo.</strong></p><p>Las condiciones de acceso no son iguales para todas las personas y afectan la posibilidad de participar.</p>',
+      i8: '<p><strong>I8 · Criterios heterogéneos sobre IA y autoría.</strong></p><p>Las reglas poco claras generan interpretaciones distintas y tensiones en la evaluación.</p>'
+    };
     const top = nodes.filter(n => n.row === 'top'), middle = nodes.filter(n => n.row === 'middle'), lower = nodes.filter(n => n.row === 'lower'), bottom = nodes.filter(n => n.row === 'bottom'), central = nodes.find(n => n.row === 'central');
     const paths = [];
-    top.forEach((n, i) => paths.push(edge(n, middle[i], 175)));
-    middle.forEach(n => paths.push(edge(n, central, 420)));
-    lower.forEach(n => paths.push(edge(central, n, 610)));
-    bottom.forEach((n, i) => lower.slice(i * 3, i * 3 + 3).forEach(m => paths.push(edge(m, n, 825))));
-    const renderedNodes = nodes.map(n => { const p = pos(n), lines = wrap(n.label, n.row === 'central' ? 29 : 24), cardId = getCard(n.id) ? n.id : ''; return `<g class="tree-node ${n.row === 'central' ? 'central' : ''}" tabindex="0" role="button" aria-label="${n.code}: ${n.label}" data-node-id="${n.id}" data-code="${n.code}" data-label="${n.label}" data-card-id="${cardId}" transform="translate(${p.x},${p.y})"><rect width="${nodeW}" height="${nodeH}" rx="0"/>${lines.map((line, j) => `<text x="${nodeW / 2}" y="${n.row === 'central' ? 35 + j * 27 : 32 + j * 23}" text-anchor="middle">${line}</text>`).join('')}</g>`; }).join('');
-    host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Árbol de problemas interactivo"><g>${paths.join('')}</g><g>${renderedNodes}</g></svg>`;
+    top.forEach((n, i) => paths.push(`${vertical(n, 210)} ${downTo(middle[i], 210)}`));
+    [[0, 1], [2, 3], [4, 5], [6, 7]].forEach(group => {
+      const a = middle[group[0]], b = middle[group[1]], junction = (center(a) + center(b)) / 2;
+      paths.push(`${vertical(a, 425)} H ${junction} ${vertical(b, 425)} H ${junction} V 450`);
+    });
+    paths.push(`M ${center(middle[0]) + (center(middle[1]) - center(middle[0])) / 2} 450 H ${center(middle[6]) + (center(middle[7]) - center(middle[6])) / 2} M ${center(central)} 450 V ${topPoint(central)}`);
+    paths.push(`${vertical(central, 650)} M ${center(lower[0])} 650 H ${center(lower[7])}`);
+    lower.forEach(n => paths.push(downTo(n, 650)));
+    [[0, 1, 2], [3, 4, 5], [6, 7]].forEach((group, i) => {
+      const groupNodes = group.map(index => lower[index]), first = groupNodes[0], last = groupNodes[groupNodes.length - 1], target = bottom[i], junction = center(target);
+      paths.push(`${vertical(first, 855)} H ${junction} ${vertical(last, 855)} H ${junction} V ${topPoint(target)}`);
+      groupNodes.slice(1, -1).forEach(n => paths.push(`${vertical(n, 855)} H ${junction}`));
+    });
+    const renderedNodes = nodes.map(n => { const p = pos(n), box = size(n), lines = n.row === 'central' ? wrapMany(n.label, 35) : wrapMany(n.label, 20), cardId = getCard(n.id) ? n.id : ''; return `<g class="tree-node ${n.row === 'central' ? 'central' : ''}" tabindex="0" role="button" aria-label="${n.code}: ${n.label}" data-node-id="${n.id}" data-code="${n.code}" data-label="${n.label}" data-card-id="${cardId}" transform="translate(${p.x},${p.y})"><rect width="${box.w}" height="${box.h}" rx="0"/>${lines.map((line, j) => `<text x="${box.w / 2}" y="${(box.h - (lines.length - 1) * 22) / 2 + j * 22}" text-anchor="middle">${line}</text>`).join('')}</g>`; }).join('');
+    const pathMarkup = paths.map(d => `<path class="tree-edge" d="${d}"/>`).join('');
+    host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Árbol de problemas interactivo"><g>${pathMarkup}</g><g>${renderedNodes}</g></svg>`;
     const dialog = document.createElement('dialog'); dialog.className = 'tree-dialog'; dialog.innerHTML = '<div class="tree-dialog-head"><h2 id="tree-dialog-title"></h2><button type="button" class="tree-dialog-close" aria-label="Cerrar ventana">Cerrar</button></div><div id="tree-dialog-body"></div>'; document.body.append(dialog);
-    const open = node => { dialog.querySelector('#tree-dialog-title').textContent = `${node.dataset.code} · ${node.dataset.label}`; const body = dialog.querySelector('#tree-dialog-body'); body.replaceChildren(...(node.dataset.cardId ? cardContent(node.dataset.cardId) : [document.createTextNode('Este elemento forma parte de la relación causal del árbol de problemas.')])); dialog.showModal(); };
+    const open = node => { dialog.querySelector('#tree-dialog-title').textContent = `${node.dataset.code} · ${node.dataset.label}`; const body = dialog.querySelector('#tree-dialog-body'); const detail = node.dataset.cardId ? cardContent(node.dataset.cardId) : null; body.innerHTML = ''; if (detail) body.replaceChildren(...detail); else body.innerHTML = generatedDetails[node.dataset.nodeId] || '<p>Este elemento forma parte de la relación causal del árbol de problemas.</p>'; dialog.showModal(); };
     host.querySelectorAll('.tree-node').forEach(node => { node.addEventListener('click', () => open(node)); node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(node); } }); });
     dialog.querySelector('.tree-dialog-close').addEventListener('click', () => dialog.close()); dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
   }

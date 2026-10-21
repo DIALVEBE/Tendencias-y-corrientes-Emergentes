@@ -20,6 +20,7 @@ nav { display: flex; flex-wrap: wrap; gap: .5rem 1.15rem; }
 nav a { color: #dcecf5; text-decoration: none; font-size: .94rem; }
 nav a:hover, nav a:focus { color: #fff; text-decoration: underline; }
 .page-content { padding: 3rem 0 4.5rem; }
+.page-content.full-page-content { padding: 0; }
 .document { background: #fff; border: 1px solid var(--line); border-radius: 1.25rem; padding: clamp(1.25rem, 4vw, 3.5rem); box-shadow: 0 14px 40px #0e3c5a0d; }
 .tree-source { display: none; }
 .tree-map { margin: 1.5rem auto 0; overflow: auto; border: 1px solid var(--line); border-radius: 1rem; background: linear-gradient(180deg, #fbfdff, #f2f7fa); }
