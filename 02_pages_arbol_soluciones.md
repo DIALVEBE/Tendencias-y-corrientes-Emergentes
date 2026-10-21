@@ -4,7 +4,7 @@ title: "Árbol de soluciones | Crisis y soluciones para la educación"
 permalink: /arbol-soluciones/
 ---
 
-<!--
+<div hidden>
 INSTRUCCIONES DE IMPLEMENTACIÓN — PÁGINA DEL ÁRBOL DE SOLUCIONES (no mostrar al visitante)
 1. Publicar este Markdown en la ruta /arbol-soluciones/ dentro del mismo GitHub Pages.
 2. Preservar los IDs O0, S1–S8, M1–M8, L1–L8 y R1–R3 y el enlace al árbol de problemas.
@@ -18,7 +18,7 @@ INSTRUCCIONES DE IMPLEMENTACIÓN — PÁGINA DEL ÁRBOL DE SOLUCIONES (no mostra
 7. Mostrar únicamente los objetivos, las medidas, sus resultados y sus conexiones causales.
 8. Enlaces y dependencias: Mermaid por CDN requiere conexión a Internet. Con JavaScript
    desactivado, las fichas <details> siguen estando disponibles para lectura.
--->
+</div>
 
 
 # Árbol de soluciones: recuperar el sentido de aprender

@@ -4,7 +4,7 @@ title: "Árbol de problemas | Crisis y soluciones para la educación"
 permalink: /arbol-problemas/
 ---
 
-<!--
+<div hidden>
 INSTRUCCIONES DE IMPLEMENTACIÓN — PÁGINA DEL ÁRBOL DE PROBLEMAS (no mostrar al visitante)
 1. Usar este Markdown como contenido exclusivo de la ruta /arbol-problemas/.
 2. En un repositorio con GitHub Pages + Jekyll, guardar este documento con un nombre .md en la raíz
@@ -19,7 +19,7 @@ INSTRUCCIONES DE IMPLEMENTACIÓN — PÁGINA DEL ÁRBOL DE PROBLEMAS (no mostrar
    La mejora estética a árbol ilustrado puede hacerse después sin cambiar las fichas ni IDs.
 7. La vista pública debe contener únicamente el diagnóstico, sus relaciones y las fichas explicativas.
 8. No presentar hipótesis y ejemplos del equipo como estadísticas ya demostradas.
--->
+</div>
 
 
 # Árbol de problemas: cuando cumplir reemplaza aprender
