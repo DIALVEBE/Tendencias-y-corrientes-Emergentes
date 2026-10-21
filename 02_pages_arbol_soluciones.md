@@ -2,6 +2,7 @@
 layout: page
 title: "Árbol de soluciones | Crisis y soluciones para la educación"
 permalink: /arbol-soluciones/
+tree_kind: solution
 ---
 
 {% comment %}
@@ -364,8 +365,7 @@ El Instituto Andaluz de Administración Pública indica que el árbol de objetiv
 
 **Volver:** [árbol de problemas](../arbol-problemas/). En el diagrama, los nodos abren sus fichas; las secciones desplegables permiten revisar el contenido completo.
 
-<!-- Comportamiento técnico: Mermaid con ventanas emergentes; las fichas <details> son respaldo accesible. -->
-<style>
+<template><style>
   .mermaid { overflow-x: auto; margin: 1.5rem 0; padding: 1rem 0; }
   .mermaid svg { max-width: none; min-width: 850px; }
   details[id] { margin: .65rem 0; padding: .85rem 1rem; border: 1px solid #a9b3bd; border-radius: .65rem; }
@@ -432,4 +432,4 @@ El Instituto Andaluz de Administración Pública indica que el árbol de objetiv
   });
   const hashId = decodeURIComponent(location.hash.slice(1));
   if (hashId) openCard(hashId);
-</script>
+</script></template>

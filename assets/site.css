@@ -20,6 +20,25 @@ nav a { color: #dcecf5; text-decoration: none; font-size: .94rem; }
 nav a:hover, nav a:focus { color: #fff; text-decoration: underline; }
 .page-content { padding: 3rem 0 4.5rem; }
 .document { background: #fff; border: 1px solid var(--line); border-radius: 1.25rem; padding: clamp(1.25rem, 4vw, 3.5rem); box-shadow: 0 14px 40px #0e3c5a0d; }
+.tree-source { display: none; }
+.tree-map { margin: 1.5rem auto 0; overflow: auto; border: 1px solid var(--line); border-radius: 1rem; background: linear-gradient(180deg, #fbfdff, #f2f7fa); }
+.tree-map svg { display: block; width: 100%; min-width: 980px; height: auto; }
+.tree-map .tree-edge { stroke: #87a5b7; stroke-width: 2.5; fill: none; }
+.tree-map .tree-node { cursor: pointer; outline: none; }
+.tree-map .tree-node rect { fill: #fff; stroke: #2d6d8f; stroke-width: 2; filter: drop-shadow(0 4px 4px #18394a15); transition: fill .16s ease, stroke .16s ease, transform .16s ease; }
+.tree-map .tree-node:hover rect, .tree-map .tree-node:focus rect { fill: #eaf5fb; stroke: #d18d1d; stroke-width: 3; }
+.tree-map .tree-node.central rect { fill: #155b85; stroke: #0e3c5a; }
+.tree-map .tree-node.central text { fill: #fff; }
+.tree-map .tree-node text { fill: #163448; font-size: 16px; font-weight: 700; pointer-events: none; }
+.tree-map .tree-node .node-kind { fill: #557589; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.tree-map .tree-node.central .node-kind { fill: #d7edf8; }
+.tree-map .map-caption { fill: #5b6b78; font-size: 14px; }
+.tree-dialog { width: min(720px, 92vw); max-height: 86vh; overflow: auto; border: 1px solid #c0ccd2; border-radius: 1rem; padding: 1.4rem; box-shadow: 0 20px 80px #14233844; background: white; color: #142333; }
+.tree-dialog::backdrop { background: #101e35a8; }
+.tree-dialog-head { display: flex; gap: 1rem; align-items: start; justify-content: space-between; }
+.tree-dialog-head h2 { color: var(--blue-dark); font-size: 1.25rem; margin: 0 0 .7rem; }
+.tree-dialog-close { border: 1px solid #a3afbc; border-radius: .5rem; background: #f4f6f9; padding: .4rem .7rem; cursor: pointer; }
+.tree-dialog-close:hover, .tree-dialog-close:focus { background: #eaf5fb; }
 .document > h1, .document > h2, .document > h3, .document > p, .document > blockquote, .document > ul, .document > ol, .document > table, .document > details, .document > hr { max-width: 900px; margin-left: auto; margin-right: auto; }
 .page-kicker, .eyebrow { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 h1, h2, h3 { line-height: 1.2; color: var(--blue-dark); }

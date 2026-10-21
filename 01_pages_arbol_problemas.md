@@ -2,6 +2,7 @@
 layout: page
 title: "Árbol de problemas | Crisis y soluciones para la educación"
 permalink: /arbol-problemas/
+tree_kind: problem
 ---
 
 {% comment %}
@@ -354,8 +355,7 @@ Antes de declarar cuáles son las tres causas críticas, el equipo debería disc
 
 **Continuar:** [consultar el árbol de soluciones](../arbol-soluciones/).
 
-<!-- Comportamiento técnico: Mermaid con ventanas emergentes; las fichas <details> son respaldo accesible. -->
-<style>
+<template><style>
   .mermaid { overflow-x: auto; margin: 1.5rem 0; padding: 1rem 0; }
   .mermaid svg { max-width: none; min-width: 850px; }
   details[id] { margin: .65rem 0; padding: .85rem 1rem; border: 1px solid #a9b3bd; border-radius: .65rem; }
@@ -422,4 +422,4 @@ Antes de declarar cuáles son las tres causas críticas, el equipo debería disc
   });
   const hashId = decodeURIComponent(location.hash.slice(1));
   if (hashId) openCard(hashId);
-</script>
+</script></template>

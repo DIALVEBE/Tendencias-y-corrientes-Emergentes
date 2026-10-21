@@ -2,6 +2,6 @@
 layout: default
 ---
 <article class="document">
-  <div class="page-kicker">Tendencias y corrientes emergentes</div>
-  {{ content }}
+  <div class="tree-map" data-tree-kind="{{ page.tree_kind | default: 'problem' }}" aria-label="Mapa interactivo"></div>
+  <div class="tree-source">{{ content }}</div>
 </article>
