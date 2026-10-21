@@ -61,5 +61,31 @@
     host.querySelectorAll('.tree-node').forEach(node => { node.addEventListener('click', () => open(node)); node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(node); } }); });
     dialog.querySelector('.tree-dialog-close').addEventListener('click', () => dialog.close()); dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
   }
-  document.querySelectorAll('.tree-map').forEach(host => renderMap(host, host.dataset.treeKind === 'solution' ? solution : problem));
+  function renderProblemMap(host, tree) {
+    const W = 1800, H = 1000, nodeW = 220, nodeH = 94, gap = 8, start = 30;
+    const nodes = [
+      ...tree.top.map((label, i) => ({ id: `${tree.ids.top}${i + 1}`, code: `${tree.ids.top.toUpperCase()}${i + 1}`, label, row: 'top', index: i })),
+      ...tree.middle.map((label, i) => ({ id: `${tree.ids.middle}${i + 1}`, code: `${tree.ids.middle.toUpperCase()}${i + 1}`, label, row: 'middle', index: i })),
+      { ...tree.central, row: 'central' },
+      ...tree.lower.map((label, i) => ({ id: `${tree.ids.lower}${i + 1}`, code: `${tree.ids.lower.toUpperCase()}${i + 1}`, label, row: 'lower', index: i })),
+      ...tree.bottom.map((label, i) => ({ id: `${tree.ids.bottom}${i + 1}`, code: `${tree.ids.bottom.toUpperCase()}${i + 1}`, label, row: 'bottom', index: i }))
+    ];
+    const x = i => start + i * ((W - (2 * start) - nodeW) / 7);
+    const pos = n => n.row === 'central' ? { x: W / 2 - nodeW / 2, y: 445 } : n.row === 'bottom' ? { x: W / 2 - nodeW / 2 - 280 + n.index * 280, y: 855 } : { x: x(n.index), y: n.row === 'top' ? 35 : n.row === 'middle' ? 235 : 650 };
+    const center = p => p.x + nodeW / 2;
+    const edge = (a, b, busY) => { const pa = pos(a), pb = pos(b); return `<path class="tree-edge" d="M ${center(pa)} ${pa.y + nodeH} V ${busY} H ${center(pb)} V ${pb.y}"/>`; };
+    const top = nodes.filter(n => n.row === 'top'), middle = nodes.filter(n => n.row === 'middle'), lower = nodes.filter(n => n.row === 'lower'), bottom = nodes.filter(n => n.row === 'bottom'), central = nodes.find(n => n.row === 'central');
+    const paths = [];
+    top.forEach((n, i) => paths.push(edge(n, middle[i], 175)));
+    middle.forEach(n => paths.push(edge(n, central, 420)));
+    lower.forEach(n => paths.push(edge(central, n, 610)));
+    bottom.forEach((n, i) => lower.slice(i * 3, i * 3 + 3).forEach(m => paths.push(edge(m, n, 825))));
+    const renderedNodes = nodes.map(n => { const p = pos(n), lines = wrap(n.label, n.row === 'central' ? 29 : 24), cardId = getCard(n.id) ? n.id : ''; return `<g class="tree-node ${n.row === 'central' ? 'central' : ''}" tabindex="0" role="button" aria-label="${n.code}: ${n.label}" data-node-id="${n.id}" data-code="${n.code}" data-label="${n.label}" data-card-id="${cardId}" transform="translate(${p.x},${p.y})"><rect width="${nodeW}" height="${nodeH}" rx="0"/>${lines.map((line, j) => `<text x="${nodeW / 2}" y="${n.row === 'central' ? 35 + j * 27 : 32 + j * 23}" text-anchor="middle">${line}</text>`).join('')}</g>`; }).join('');
+    host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Árbol de problemas interactivo"><g>${paths.join('')}</g><g>${renderedNodes}</g></svg>`;
+    const dialog = document.createElement('dialog'); dialog.className = 'tree-dialog'; dialog.innerHTML = '<div class="tree-dialog-head"><h2 id="tree-dialog-title"></h2><button type="button" class="tree-dialog-close" aria-label="Cerrar ventana">Cerrar</button></div><div id="tree-dialog-body"></div>'; document.body.append(dialog);
+    const open = node => { dialog.querySelector('#tree-dialog-title').textContent = `${node.dataset.code} · ${node.dataset.label}`; const body = dialog.querySelector('#tree-dialog-body'); body.replaceChildren(...(node.dataset.cardId ? cardContent(node.dataset.cardId) : [document.createTextNode('Este elemento forma parte de la relación causal del árbol de problemas.')])); dialog.showModal(); };
+    host.querySelectorAll('.tree-node').forEach(node => { node.addEventListener('click', () => open(node)); node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(node); } }); });
+    dialog.querySelector('.tree-dialog-close').addEventListener('click', () => dialog.close()); dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+  }
+  document.querySelectorAll('.tree-map').forEach(host => host.dataset.treeKind === 'solution' ? renderMap(host, solution) : renderProblemMap(host, problem));
 })();

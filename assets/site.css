@@ -12,6 +12,7 @@ html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 a { color: var(--blue); }
 .site-shell { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+.full-page-content { width: 100%; max-width: none; padding: 0; }
 .site-header { background: var(--blue-dark); color: #fff; border-bottom: 4px solid var(--accent); }
 .header-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .brand { color: #fff; font-weight: 750; letter-spacing: .01em; text-decoration: none; }
@@ -39,6 +40,17 @@ nav a:hover, nav a:focus { color: #fff; text-decoration: underline; }
 .tree-dialog-head h2 { color: var(--blue-dark); font-size: 1.25rem; margin: 0 0 .7rem; }
 .tree-dialog-close { border: 1px solid #a3afbc; border-radius: .5rem; background: #f4f6f9; padding: .4rem .7rem; cursor: pointer; }
 .tree-dialog-close:hover, .tree-dialog-close:focus { background: #eaf5fb; }
+.problem-page { min-height: calc(100vh - 72px); border: 0; border-radius: 0; padding: 0; box-shadow: none; background: #fff; }
+.problem-footer { display: none; }
+.problem-page .tree-map { width: 100%; height: calc(100vh - 72px); min-height: 650px; margin: 0; border: 0; border-radius: 0; background: #fff; }
+.problem-page .tree-map svg { width: 100%; min-width: 1100px; height: 100%; min-height: 650px; }
+.problem-page .tree-map .tree-edge { stroke: #111; stroke-width: 4; }
+.problem-page .tree-map .tree-node rect { fill: #052c73; stroke: #052c73; filter: none; }
+.problem-page .tree-map .tree-node text { fill: #fff; font-size: 18px; font-weight: 500; }
+.problem-page .tree-map .tree-node .node-kind { display: none; }
+.problem-page .tree-map .tree-node.central rect { fill: #087fc3; stroke: #087fc3; }
+.problem-page .tree-map .tree-node.central text { font-size: 25px; font-weight: 800; }
+.problem-page .tree-map .tree-node:hover rect, .problem-page .tree-map .tree-node:focus rect { fill: #13a9e2; stroke: #001f55; stroke-width: 4; }
 .document > h1, .document > h2, .document > h3, .document > p, .document > blockquote, .document > ul, .document > ol, .document > table, .document > details, .document > hr { max-width: 900px; margin-left: auto; margin-right: auto; }
 .page-kicker, .eyebrow { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 h1, h2, h3 { line-height: 1.2; color: var(--blue-dark); }

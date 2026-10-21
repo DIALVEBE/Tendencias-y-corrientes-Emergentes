@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<article class="document">
+<article class="document tree-document {{ page.tree_kind | default: 'problem' }}-page">
   <div class="tree-map" data-tree-kind="{{ page.tree_kind | default: 'problem' }}" aria-label="Mapa interactivo"></div>
   <div class="tree-source">{{ content }}</div>
 </article>
