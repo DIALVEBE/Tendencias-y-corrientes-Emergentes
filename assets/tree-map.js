@@ -126,5 +126,57 @@
     host.querySelectorAll('.tree-node').forEach(node => { node.addEventListener('click', () => open(node)); node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(node); } }); });
     dialog.querySelector('.tree-dialog-close').addEventListener('click', () => dialog.close()); dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
   }
-  document.querySelectorAll('.tree-map').forEach(host => host.dataset.treeKind === 'solution' ? renderMap(host, solution) : renderProblemMap(host, problem));
+  function renderSolutionMap(host, tree) {
+    const W = 1920, H = 1080, nodeW = 230, nodeH = 108, start = 25;
+    const nodes = [
+      ...tree.top.map((label, i) => ({ id: `${tree.ids.top}${i + 1}`, code: `${tree.ids.top.toUpperCase()}${i + 1}`, label, row: 'top', index: i })),
+      ...tree.middle.map((label, i) => ({ id: `${tree.ids.middle}${i + 1}`, code: `${tree.ids.middle.toUpperCase()}${i + 1}`, label, row: 'middle', index: i })),
+      { ...tree.central, row: 'central' },
+      ...tree.lower.map((label, i) => ({ id: `${tree.ids.lower}${i + 1}`, code: `${tree.ids.lower.toUpperCase()}${i + 1}`, label, row: 'lower', index: i })),
+      ...tree.bottom.map((label, i) => ({ id: `${tree.ids.bottom}${i + 1}`, code: `${tree.ids.bottom.toUpperCase()}${i + 1}`, label, row: 'bottom', index: i }))
+    ];
+    const centralW = 600, centralH = 140;
+    const x = i => start + i * ((W - (2 * start) - nodeW) / 7);
+    const size = n => n.row === 'central' ? { w: centralW, h: centralH } : { w: nodeW, h: nodeH };
+    const pos = n => n.row === 'central' ? { x: W / 2 - centralW / 2, y: 480 } : n.row === 'bottom' ? { x: W / 2 - nodeW / 2 - 300 + n.index * 300, y: 910 } : { x: x(n.index), y: n.row === 'top' ? 32 : n.row === 'middle' ? 270 : 700 };
+    const center = n => pos(n).x + size(n).w / 2;
+    const topPoint = n => pos(n).y;
+    const bottomPoint = n => pos(n).y + size(n).h;
+    const vertical = (n, y) => `M ${center(n)} ${bottomPoint(n)} V ${y}`;
+    const downTo = (n, y) => `M ${center(n)} ${y} V ${topPoint(n)}`;
+    const generatedDetails = {
+      l1: '<p><strong>L1 · Mayor autonomía y capacidad de justificar decisiones.</strong></p><p>Se espera que el estudiante pueda resolver, explicar y adaptar una solución sin depender de una respuesta automática.</p>',
+      l2: '<p><strong>L2 · Materiales pertinentes y comprensión acompañada.</strong></p><p>La validación docente mejora la exactitud, el contexto y el nivel de dificultad de los materiales.</p>',
+      l3: '<p><strong>L3 · Evidencias fiables y notas mejor justificadas.</strong></p><p>Valorar proceso, avances y explicaciones permite fundamentar mejor la evaluación.</p>',
+      l4: '<p><strong>L4 · Menos errores repetidos y mejor autorregulación.</strong></p><p>Los ciclos de retroalimentación permiten corregir antes del cierre y explicar las mejoras.</p>',
+      l5: '<p><strong>L5 · Mayor transferencia y pertinencia social.</strong></p><p>Los retos situados conectan las competencias con problemas y datos del contexto.</p>',
+      l6: '<p><strong>L6 · Participación equilibrada y práctica verificable.</strong></p><p>Los microretos individuales hacen visible la práctica antes de la colaboración.</p>',
+      l7: '<p><strong>L7 · Oportunidades más equitativas.</strong></p><p>Conocer condiciones de acceso permite ajustar recursos y formas de participación.</p>',
+      l8: '<p><strong>L8 · Confianza y consistencia en la autoría.</strong></p><p>Reglas transparentes reducen la incertidumbre y hacen más coherente la evaluación.</p>',
+      m1: '<p><strong>M1 · Intento propio antes de consultar IA.</strong></p><p>Solicitar una primera solución, registrar la consulta y explicar qué se aceptó o modificó.</p>',
+      m2: '<p><strong>M2 · Ejecutar y revisar cada ejemplo generado.</strong></p><p>Comprobar exactitud, contexto y nivel de dificultad antes de usar materiales con el grupo.</p>',
+      m3: '<p><strong>M3 · Dividir actividades en planteamiento y avance.</strong></p><p>Recoger evidencias progresivas del razonamiento, las pruebas y las decisiones.</p>',
+      m4: '<p><strong>M4 · Programar hitos de revisión y segunda versión.</strong></p><p>Incluir retroalimentación, autoevaluación y una corrección justificada.</p>',
+      m5: '<p><strong>M5 · Proponer retos con datos y contextos reales.</strong></p><p>Usar problemas situados para conectar las competencias con necesidades concretas.</p>',
+      m6: '<p><strong>M6 · Iniciar cada bloque con un microreto individual.</strong></p><p>Practicar primero y colaborar después para hacer visibles los aprendizajes de cada persona.</p>',
+      m7: '<p><strong>M7 · Consultar condiciones de acceso sin exponer a nadie.</strong></p><p>Identificar barreras de conectividad, equipos, tiempo y competencias para ajustar la actividad.</p>',
+      m8: '<p><strong>M8 · Construir acuerdos sobre IA y autoría.</strong></p><p>Definir ejemplos concretos de usos permitidos, declaración de apoyos y criterios de evaluación.</p>'
+    };
+    const top = nodes.filter(n => n.row === 'top'), middle = nodes.filter(n => n.row === 'middle'), lower = nodes.filter(n => n.row === 'lower'), bottom = nodes.filter(n => n.row === 'bottom'), central = nodes.find(n => n.row === 'central');
+    const paths = [];
+    top.forEach((n, i) => paths.push(`${vertical(n, 210)} ${downTo(middle[i], 210)}`));
+    [[0, 1], [2, 3], [4, 5], [6, 7]].forEach(group => { const a = middle[group[0]], b = middle[group[1]], junction = (center(a) + center(b)) / 2; paths.push(`${vertical(a, 425)} H ${junction} ${vertical(b, 425)} H ${junction} V 450`); });
+    paths.push(`M ${(center(middle[0]) + center(middle[1])) / 2} 450 H ${(center(middle[6]) + center(middle[7])) / 2} M ${center(central)} 450 V ${topPoint(central)}`);
+    paths.push(`${vertical(central, 650)} M ${center(lower[0])} 650 H ${center(lower[7])}`);
+    lower.forEach(n => paths.push(downTo(n, 650)));
+    [[0, 1, 2, 3], [4, 5], [6, 7]].forEach((group, i) => { const groupNodes = group.map(index => lower[index]), first = groupNodes[0], last = groupNodes[groupNodes.length - 1], target = bottom[i], junction = center(target); paths.push(`${vertical(first, 855)} H ${junction} ${vertical(last, 855)} H ${junction} V ${topPoint(target)}`); groupNodes.slice(1, -1).forEach(n => paths.push(`${vertical(n, 855)} H ${junction}`)); });
+    const renderedNodes = nodes.map(n => { const p = pos(n), box = size(n), lines = n.row === 'central' ? wrapMany(n.label, 38) : wrapMany(n.label, 20), cardId = getCard(n.id) ? n.id : ''; return `<g class="tree-node ${n.row === 'central' ? 'central' : ''}" tabindex="0" role="button" aria-label="${n.code}: ${n.label}" data-node-id="${n.id}" data-code="${n.code}" data-label="${n.label}" data-card-id="${cardId}" transform="translate(${p.x},${p.y})"><rect width="${box.w}" height="${box.h}" rx="0"/>${lines.map((line, j) => `<text x="${box.w / 2}" y="${(box.h - (lines.length - 1) * 22) / 2 + j * 22}" text-anchor="middle">${line}</text>`).join('')}</g>`; }).join('');
+    const pathMarkup = paths.map(d => `<path class="tree-edge" d="${d}"/>`).join('');
+    host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Árbol de soluciones interactivo"><g>${pathMarkup}</g><g>${renderedNodes}</g></svg>`;
+    const dialog = document.createElement('dialog'); dialog.className = 'tree-dialog'; dialog.innerHTML = '<div class="tree-dialog-head"><h2 id="tree-dialog-title"></h2><button type="button" class="tree-dialog-close" aria-label="Cerrar ventana">Cerrar</button></div><div id="tree-dialog-body"></div>'; document.body.append(dialog);
+    const open = node => { dialog.querySelector('#tree-dialog-title').textContent = `${node.dataset.code} · ${node.dataset.label}`; const body = dialog.querySelector('#tree-dialog-body'); const detail = node.dataset.cardId ? cardContent(node.dataset.cardId) : null; body.innerHTML = ''; if (detail) body.replaceChildren(...detail); else body.innerHTML = generatedDetails[node.dataset.nodeId] || '<p>Este elemento forma parte de la relación de objetivos y medidas del árbol de soluciones.</p>'; dialog.showModal(); };
+    host.querySelectorAll('.tree-node').forEach(node => { node.addEventListener('click', () => open(node)); node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(node); } }); });
+    dialog.querySelector('.tree-dialog-close').addEventListener('click', () => dialog.close()); dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+  }
+  document.querySelectorAll('.tree-map').forEach(host => host.dataset.treeKind === 'solution' ? renderSolutionMap(host, solution) : renderProblemMap(host, problem));
 })();

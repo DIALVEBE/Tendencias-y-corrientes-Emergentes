@@ -17,10 +17,10 @@
         </nav>
       </div>
     </header>
-    <main class="site-shell page-content{% if page.tree_kind == 'problem' %} full-page-content{% endif %}">
+    <main class="site-shell page-content{% if page.tree_kind %} full-page-content{% endif %}">
       {{ content }}
     </main>
-    <footer class="site-footer{% if page.tree_kind == 'problem' %} problem-footer{% endif %}">
+    <footer class="site-footer{% if page.tree_kind %} problem-footer{% endif %}">
       <div class="site-shell">Actividad: Crisis y soluciones para la educación · Educación superior</div>
     </footer>
     <script src="{{ '/assets/tree-map.js' | relative_url }}" defer></script>
