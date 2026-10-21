@@ -1,3 +1,5 @@
-*.pdf
-guia_codex_mapa_conceptual_pedagogia.md
-mapaconpcetualejemplo.jpg
+03_guia_integrantes_problemas.md
+04_guia_integrantes_soluciones.md
+_site/
+.jekyll-cache/
+.sass-cache/

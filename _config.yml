@@ -1,0 +1,13 @@
+title: "Tendencias y corrientes emergentes"
+description: "Árboles de problemas y soluciones para la educación superior"
+theme: null
+markdown: kramdown
+kramdown:
+  input: GFM
+  parse_block_html: true
+  hard_wrap: false
+plugins: []
+exclude:
+  - 03_guia_integrantes_problemas.md
+  - 04_guia_integrantes_soluciones.md
+  - README.md

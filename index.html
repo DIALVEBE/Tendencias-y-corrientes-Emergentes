@@ -1,72 +1,29 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Actividad 1.1 | Una visión sinóptica de la pedagogía</title>
-    <meta
-      name="description"
-      content="Mapa conceptual expandido de la Actividad 1.1: Una visión sinóptica de la pedagogía."
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
-    <script src="data.js" defer></script>
-    <script src="app.js" defer></script>
-  </head>
-  <body>
-    <header class="topbar">
-      <div>
-        <p class="activity">Actividad 1.1: Mapa conceptual</p>
-        <h1>Una visión sinóptica de la pedagogía</h1>
-        <p class="subtitle">Capítulo 1: La pedagogía: tradición y vigencia</p>
-      </div>
-      <div class="meta">
-        <p><strong>Autor:</strong> Diego Alejandro Vela Beltrán</p>
-        <p><strong>Curso:</strong> TENDENCIAS Y CORRIENTES EMERGENTES</p>
-        <p><strong>Docente:</strong> Andrea del Pilar Pérez Raigoso.</p>
-      </div>
-      <nav class="actions" aria-label="Acciones del mapa">
-        <a href="#mapa">Mapa</a>
-        <a href="#preguntas">Preguntas reflexivas</a>
-        <button type="button" id="expandAllBtn">Expandir todo</button>
-        <button type="button" id="collapseAllBtn">Contraer todo</button>
-        <button type="button" id="captureBtn">Modo captura</button>
-        <button type="button" id="exportBtn">Exportar PNG</button>
-      </nav>
-    </header>
+---
+layout: default
+title: "Tendencias y corrientes emergentes"
+---
+<section class="hero">
+  <p class="eyebrow">Actividad · Crisis y soluciones para la educación</p>
+  <h1>Tendencias y corrientes emergentes</h1>
+  <p class="lead">Dos árboles para analizar cómo recuperar el aprendizaje autónomo, crítico y aplicado en la educación superior.</p>
+</section>
 
-    <main id="mapa" class="map-page">
-      <section class="source-note" aria-label="Fuente académica">
-        <p>
-          <strong>Fuente principal:</strong> Bautista Roa, Milton Adolfo. (2025).
-          <em>Tendencias y corrientes pedagógicas emergentes</em>. Ediciones USTA Tunja.
-          Capítulo 1, "La pedagogía: tradición y vigencia", pp. 11-30.
-        </p>
-        <p>
-          Los ejemplos contextualizados corresponden a aplicaciones del autor del mapa a su
-          propia práctica docente y no son citas textuales del libro.
-        </p>
-      </section>
+<section class="route-grid" aria-label="Páginas de la actividad">
+  <a class="route-card problem" href="{{ '/arbol-problemas/' | relative_url }}">
+    <span class="route-number">01</span>
+    <h2>Árbol de problemas</h2>
+    <p>Diagnóstico causal: raíces, causas directas, problema central y efectos.</p>
+    <span class="route-link">Explorar el diagnóstico →</span>
+  </a>
+  <a class="route-card solution" href="{{ '/arbol-soluciones/' | relative_url }}">
+    <span class="route-number">02</span>
+    <h2>Árbol de soluciones</h2>
+    <p>Objetivos y medidas ejecutables para intervenir sobre las causas identificadas.</p>
+    <span class="route-link">Explorar las soluciones →</span>
+  </a>
+</section>
 
-      <section id="conceptMap" class="concept-map mind-map" aria-label="Mapa mental expandible">
-        <div class="mind-core">
-          <article class="root-card">
-            <span class="node-label">Nodo central</span>
-            <h2>La pedagogía: tradición y vigencia</h2>
-            <p>
-              La pedagogía se comprende como un saber con historia, vigencia y capacidad de
-              orientar la educación actual. No es una receta técnica ni un simple conjunto de
-              estrategias de aula; es una forma de pensar el sentido de educar, la formación
-              humana, la relación docente-estudiante y las decisiones que se toman en contextos
-              sociales, culturales, tecnológicos y éticos concretos.
-            </p>
-          </article>
-        </div>
-
-        <section id="branchGrid" class="mind-branches"></section>
-
-        <section id="preguntas" class="question-branch" aria-label="Preguntas reflexivas dentro del mapa"></section>
-      </section>
-    </main>
-  </body>
-</html>
+<section class="reading-note" aria-labelledby="reading-title">
+  <h2 id="reading-title">Cómo recorrer el sitio</h2>
+  <p>Lee cada árbol de abajo hacia arriba: las raíces muestran condiciones y medidas, el tronco concentra el problema u objetivo general, y la copa presenta efectos o resultados. Puedes seleccionar los nodos del diagrama para abrir sus fichas explicativas.</p>
+</section>
